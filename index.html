@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cortex Duo | Automação Inteligente para Negócios</title>
+    <title>Cortex Duo</title>
+    <link rel="icon" type="image/png" href="https://i.ibb.co/mS4p0Gz/cortex-Photoroom.png">
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -24,15 +25,31 @@
             transform: translateY(-2px);
             box-shadow: 0 4px 20px rgba(249, 115, 22, 0.3); /* Laranja */
         }
+        .service-card {
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
         .service-card:hover {
             transform: translateY(-5px);
-            border-color: #f97316; /* Laranja */
+            border-color: #f97316 !important;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
         }
         .case-study-card {
             background-color: #172a45;
         }
-        #contact-modal { 
-            transition: opacity 0.3s ease; 
+        #contact-modal, #chat-widget-window, #service-modal { 
+            transition: opacity 0.3s ease, transform 0.3s ease; 
+        }
+        
+        #chat-widget-window.active {
+            transform: translateY(0) scale(1);
+            opacity: 1;
+            visibility: visible;
+        }
+         #chat-widget-window {
+            transform: translateY(20px) scale(0.95);
+            opacity: 0;
+            visibility: hidden;
         }
     </style>
 </head>
@@ -41,8 +58,8 @@
     <!-- Cabeçalho e Navegação -->
     <header class="bg-slate-900/80 backdrop-blur-sm sticky top-0 z-40 shadow-md">
         <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
-            <a href="#" class="flex items-center gap-3">
-                <img src="https://i.ibb.co/mS4p0Gz/cortex-Photoroom.png" alt="Cortex Duo Logo" class="h-10 w-auto">
+            <a href="#" class="flex items-center gap-2">
+                <img src="https://i.ibb.co/mS4p0Gz/cortex-Photoroom.png" alt="Cortex Duo Logo" class="h-9 w-auto">
                 <span class="text-white text-xl font-bold hidden sm:inline">Cortex Duo</span>
             </a>
             <div class="hidden md:flex space-x-8 items-center">
@@ -87,48 +104,48 @@
                 </div>
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                     <!-- Cards de serviço com icones laranja -->
-                    <div class="service-card border-2 border-transparent bg-slate-50 dark:bg-slate-900 rounded-lg p-6 shadow-lg transition-all duration-300">
+                    <button data-service="atendimento" class="service-card text-left border-2 border-transparent bg-slate-50 dark:bg-slate-900 rounded-lg p-6 shadow-lg">
                         <div class="flex items-center justify-center h-12 w-12 rounded-full bg-orange-100 dark:bg-orange-900/50 mb-4">
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-orange-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" /></svg>
                         </div>
                         <h3 class="text-xl font-bold mb-2 text-slate-900 dark:text-white">Chatbots de Atendimento 24/7</h3>
                         <p class="text-gray-600 dark:text-gray-400">Automatize o suporte ao cliente com chatbots que resolvem dúvidas, abrem chamados e guiam usuários, disponíveis a qualquer hora do dia.</p>
-                    </div>
-                     <div class="service-card border-2 border-transparent bg-slate-50 dark:bg-slate-900 rounded-lg p-6 shadow-lg transition-all duration-300">
+                    </button>
+                     <button data-service="vendas" class="service-card text-left border-2 border-transparent bg-slate-50 dark:bg-slate-900 rounded-lg p-6 shadow-lg">
                          <div class="flex items-center justify-center h-12 w-12 rounded-full bg-orange-100 dark:bg-orange-900/50 mb-4">
                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-orange-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" /></svg>
                         </div>
                         <h3 class="text-xl font-bold mb-2 text-slate-900 dark:text-white">Chatbots para Vendas e Leads</h3>
                         <p class="text-gray-600 dark:text-gray-400">Qualifique visitantes do seu site, agende reuniões e direcione leads para sua equipe de vendas de forma automática e eficiente.</p>
-                    </div>
-                    <div class="service-card border-2 border-transparent bg-slate-50 dark:bg-slate-900 rounded-lg p-6 shadow-lg transition-all duration-300">
+                    </button>
+                    <button data-service="rpa" class="service-card text-left border-2 border-transparent bg-slate-50 dark:bg-slate-900 rounded-lg p-6 shadow-lg">
                          <div class="flex items-center justify-center h-12 w-12 rounded-full bg-orange-100 dark:bg-orange-900/50 mb-4">
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-orange-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" /></svg>
                         </div>
                         <h3 class="text-xl font-bold mb-2 text-slate-900 dark:text-white">Automação de Processos (RPA)</h3>
                         <p class="text-gray-600 dark:text-gray-400">Elimine tarefas manuais e repetitivas. Nossos robôs de software podem preencher formulários, extrair dados e integrar sistemas.</p>
-                    </div>
-                    <div class="service-card border-2 border-transparent bg-slate-50 dark:bg-slate-900 rounded-lg p-6 shadow-lg transition-all duration-300">
+                    </button>
+                    <button data-service="ecommerce" class="service-card text-left border-2 border-transparent bg-slate-50 dark:bg-slate-900 rounded-lg p-6 shadow-lg">
                          <div class="flex items-center justify-center h-12 w-12 rounded-full bg-orange-100 dark:bg-orange-900/50 mb-4">
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-orange-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4z" /></svg>
                         </div>
                         <h3 class="text-xl font-bold mb-2 text-slate-900 dark:text-white">IA para E-commerce</h3>
                         <p class="text-gray-600 dark:text-gray-400">Implemente sistemas de recomendação de produtos, chatbots para recuperação de carrinho e análise de comportamento de compra.</p>
-                    </div>
-                    <div class="service-card border-2 border-transparent bg-slate-50 dark:bg-slate-900 rounded-lg p-6 shadow-lg transition-all duration-300">
+                    </button>
+                    <button data-service="dados" class="service-card text-left border-2 border-transparent bg-slate-50 dark:bg-slate-900 rounded-lg p-6 shadow-lg">
                          <div class="flex items-center justify-center h-12 w-12 rounded-full bg-orange-100 dark:bg-orange-900/50 mb-4">
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-orange-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" /></svg>
                         </div>
                         <h3 class="text-xl font-bold mb-2 text-slate-900 dark:text-white">Análise Preditiva e Dados</h3>
                         <p class="text-gray-600 dark:text-gray-400">Utilize IA para analisar grandes volumes de dados, identificar tendências, prever demandas e tomar decisões mais inteligentes.</p>
-                    </div>
-                    <div class="service-card border-2 border-transparent bg-slate-50 dark:bg-slate-900 rounded-lg p-6 shadow-lg transition-all duration-300">
+                    </button>
+                    <button data-service="integracao" class="service-card text-left border-2 border-transparent bg-slate-50 dark:bg-slate-900 rounded-lg p-6 shadow-lg">
                          <div class="flex items-center justify-center h-12 w-12 rounded-full bg-orange-100 dark:bg-orange-900/50 mb-4">
                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-orange-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1" /></svg>
                         </div>
                         <h3 class="text-xl font-bold mb-2 text-slate-900 dark:text-white">Integração com Sistemas</h3>
                         <p class="text-gray-600 dark:text-gray-400">Nossas soluções se integram perfeitamente com seus sistemas existentes (CRMs, ERPs, APIs) para um fluxo de trabalho unificado.</p>
-                    </div>
+                    </button>
                 </div>
             </div>
         </section>
@@ -143,7 +160,7 @@
 
                 <div class="max-w-4xl mx-auto">
                     <!-- Seletores -->
-                    <div class="max-w-md mx-auto mb-8">
+                    <div class="max-w-md mx-auto mb-4">
                         <div>
                             <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2 text-center">Selecione um tipo de plano:</label>
                             <div class="flex bg-white dark:bg-slate-800 rounded-lg p-1 border dark:border-slate-600">
@@ -154,7 +171,7 @@
                     </div>
                     
                     <!-- Sub-seletores para Plano Inteligente -->
-                    <div id="inteligente-options" class="hidden mb-8 max-w-md mx-auto">
+                    <div id="inteligente-options" class="hidden mb-4 max-w-md mx-auto">
                         <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2 text-center">Qual nível de IA você quer ver?</label>
                         <div class="flex bg-white dark:bg-slate-800 rounded-lg p-1 border dark:border-slate-600">
                             <button data-level="1" class="level-selector flex-1 p-2 rounded-md text-sm font-semibold transition-colors bg-blue-500 text-white">Nível 1</button>
@@ -162,8 +179,13 @@
                         </div>
                     </div>
 
+                    <!-- Explicação Dinâmica -->
+                    <div class="mt-6 text-center text-gray-600 dark:text-gray-400 min-h-[4em] px-4 max-w-2xl mx-auto">
+                        <p id="dynamic-description-text" class="transition-opacity duration-300"></p>
+                    </div>
+
                     <!-- Janela de Demonstração Única -->
-                    <div id="chat-demo-container" class="bg-white dark:bg-slate-800 rounded-lg shadow-lg p-6 max-w-lg mx-auto">
+                    <div id="chat-demo-container" class="bg-white dark:bg-slate-800 rounded-lg shadow-lg p-6 max-w-lg mx-auto mt-6">
                         <h3 id="demo-title" class="text-2xl font-bold text-slate-900 dark:text-white mb-1">Demonstração: Plano Essencial</h3>
                         <p id="demo-description" class="text-sm text-gray-500 dark:text-gray-400 mb-4">Baseado em regras. Não interpreta áudio, imagens ou texto fora do script.</p>
                         <div class="bg-gray-100 dark:bg-slate-700 rounded-lg p-4 h-64 sm:h-80 flex flex-col">
@@ -309,6 +331,25 @@
         </section>
     </main>
 
+    <!-- Modal de Serviço -->
+    <div id="service-modal" class="hidden fixed inset-0 bg-black bg-opacity-60 backdrop-blur-sm flex items-center justify-center p-4 z-50">
+        <div class="bg-white dark:bg-slate-800 rounded-lg shadow-xl w-full max-w-2xl max-h-[90vh] overflow-y-auto relative">
+            <button id="close-service-modal-button" class="absolute top-4 right-4 text-gray-500 hover:text-gray-800 dark:text-gray-400 dark:hover:text-white text-4xl font-light leading-none">&times;</button>
+            <img id="service-modal-image" src="" alt="Ilustração do Serviço" class="w-full h-56 object-cover rounded-t-lg">
+            <div class="p-8 md:p-12">
+                <h2 id="service-modal-title" class="text-2xl sm:text-3xl font-bold text-slate-900 dark:text-white"></h2>
+                <p id="service-modal-description" class="mt-4 text-gray-600 dark:text-gray-400"></p>
+                <div class="mt-6 pt-6 border-t border-slate-200 dark:border-slate-700">
+                    <h3 class="text-lg font-semibold text-slate-900 dark:text-white">Exemplos de Aplicação:</h3>
+                    <ul id="service-modal-examples" class="mt-4 space-y-3 text-gray-600 dark:text-gray-400 list-disc list-inside">
+                        <!-- Exemplos serão inseridos aqui -->
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
     <!-- Modal de Contato -->
     <div id="contact-modal" class="hidden fixed inset-0 bg-black bg-opacity-60 backdrop-blur-sm flex items-center justify-center p-4 z-50 transition-opacity duration-300">
         <div class="bg-white dark:bg-slate-800 rounded-lg shadow-xl w-full max-w-4xl max-h-[90vh] overflow-y-auto relative">
@@ -428,23 +469,26 @@
     <div class="fixed bottom-5 right-5 z-50">
         <!-- Botão do Widget -->
         <button id="chat-widget-button" class="bg-orange-500 text-white rounded-full shadow-lg w-16 h-16 flex items-center justify-center hover:bg-orange-600 transition-transform hover:scale-110">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+             <svg xmlns="http://www.w3.org/2000/svg" id="chat-icon-open" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
             </svg>
         </button>
         <!-- Janela do Chat (escondida por padrão) -->
-        <div id="chat-widget-window" class="hidden absolute bottom-20 right-0 w-80 bg-white dark:bg-slate-800 rounded-lg shadow-2xl border dark:border-slate-700 flex flex-col" style="height: 28rem;">
+        <div id="chat-widget-window" class="absolute bottom-20 right-0 w-80 sm:w-96 bg-white dark:bg-slate-800 rounded-lg shadow-2xl border dark:border-slate-700 flex flex-col" style="height: 32rem;">
             <div class="bg-slate-900 text-white p-4 rounded-t-lg flex justify-between items-center">
                 <h3 class="font-bold">Assistente Virtual</h3>
-                <button id="close-chat-widget" class="text-gray-300 hover:text-white">&times;</button>
+                <button id="close-chat-widget" class="text-gray-300 hover:text-white text-2xl leading-none">&times;</button>
             </div>
-            <div class="flex-1 p-4 overflow-y-auto text-sm">
-                 <div class="bg-orange-500 text-white p-2 rounded-lg rounded-bl-none max-w-xs mb-2">
-                    Olá! 👋 Vi que está explorando nossas soluções. Posso ajudar a encontrar o plano ideal para você?
-                </div>
+            <div id="ai-chat-messages" class="flex-1 p-4 overflow-y-auto text-sm space-y-3">
+                 <!-- Mensagens da IA serão inseridas aqui -->
             </div>
-            <div class="p-4 border-t dark:border-slate-700">
-                <input type="text" placeholder="Digite sua mensagem..." class="w-full bg-slate-100 dark:bg-slate-700 border-gray-300 dark:border-slate-600 rounded-md shadow-sm focus:ring-orange-500 focus:border-orange-500 p-2 text-sm">
+            <div class="p-2 border-t dark:border-slate-700 flex items-center">
+                <input type="text" id="ai-chat-input" placeholder="Digite sua mensagem..." class="w-full bg-slate-100 dark:bg-slate-700 border-gray-300 dark:border-slate-600 rounded-md shadow-sm focus:ring-orange-500 focus:border-orange-500 p-2 text-sm">
+                <button id="ai-send-button" class="ml-2 p-2 bg-orange-500 text-white rounded-md hover:bg-orange-600">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                      <path d="M10.894 2.553a1 1 0 00-1.788 0l-7 14a1 1 0 001.169 1.409l5-1.429A1 1 0 009 15.571V11a1 1 0 112 0v4.571a1 1 0 00.725.962l5 1.428a1 1 0 001.17-1.408l-7-14z" />
+                    </svg>
+                </button>
             </div>
         </div>
     </div>
@@ -466,17 +510,120 @@
             }
         });
 
-        // Script para Widget de Chat
+        // Script para Widget de Chat IA
         const chatWidgetButton = document.getElementById('chat-widget-button');
         const chatWidgetWindow = document.getElementById('chat-widget-window');
         const closeChatWidgetButton = document.getElementById('close-chat-widget');
+        const aiChatMessages = document.getElementById('ai-chat-messages');
+        const aiChatInput = document.getElementById('ai-chat-input');
+        const aiSendButton = document.getElementById('ai-send-button');
 
         chatWidgetButton.addEventListener('click', () => {
-            chatWidgetWindow.classList.toggle('hidden');
+            chatWidgetWindow.classList.toggle('active');
         });
         closeChatWidgetButton.addEventListener('click', () => {
-            chatWidgetWindow.classList.add('hidden');
+            chatWidgetWindow.classList.remove('active');
         });
+        
+        const addMessage = (messageData, sender) => {
+            const messageDiv = document.createElement('div');
+            
+            if (sender === 'user') {
+                messageDiv.textContent = messageData.text;
+                messageDiv.className = 'bg-gray-200 dark:bg-slate-600 text-gray-800 dark:text-gray-200 p-2 rounded-lg rounded-br-none ml-auto max-w-[85%] mb-2 text-right break-words';
+            } else { // sender === 'ai'
+                const textNode = document.createElement('span');
+                textNode.textContent = messageData.text;
+                messageDiv.appendChild(textNode);
+                messageDiv.className = 'bg-orange-500 text-white p-2 rounded-lg rounded-bl-none max-w-[85%] mb-2 break-words';
+
+                if (messageData.button) {
+                    const button = document.createElement('button');
+                    button.textContent = messageData.button.text;
+                    button.className = 'block w-full text-left bg-orange-400 dark:bg-orange-600 hover:bg-orange-300 dark:hover:bg-orange-500 rounded-md p-2 mt-2 font-semibold transition-colors text-sm';
+                    button.onclick = () => {
+                        if (messageData.button.link === '#contact') {
+                            contactModal.classList.remove('hidden');
+                        } else {
+                            const targetElement = document.querySelector(messageData.button.link);
+                            if (targetElement) {
+                                targetElement.scrollIntoView({ behavior: 'smooth' });
+                            }
+                        }
+                        chatWidgetWindow.classList.remove('active'); // Fecha o chat
+                    };
+                    messageDiv.appendChild(button);
+                }
+            }
+            aiChatMessages.appendChild(messageDiv);
+            aiChatMessages.scrollTop = aiChatMessages.scrollHeight;
+        };
+        
+        const getAiResponse = (input) => {
+            const lowerInput = input.toLowerCase();
+            if (lowerInput.includes('serviços') || lowerInput.includes('soluções') || lowerInput.includes('fazem')) {
+                return {
+                    text: 'Oferecemos diversas soluções de automação, incluindo Chatbots, Automação de Processos (RPA) e IA para E-commerce. Gostaria de ver mais detalhes?',
+                    button: { text: 'Ver todos os serviços', link: '#services' }
+                };
+            } else if (lowerInput.includes('chatbot') || lowerInput.includes('exemplos')) {
+                return {
+                    text: 'Nossos chatbots são super versáteis! Temos desde planos mais simples até IAs avançadas que podem até fazer ligações. Quer ver como eles funcionam na prática?',
+                    button: { text: 'Ver exemplos de chatbots', link: '#examples' }
+                };
+            } else if (lowerInput.includes('preço') || lowerInput.includes('valor') || lowerInput.includes('custo')) {
+                return {
+                    text: 'Nossos preços são personalizados. A melhor forma de saber o valor é conversando com nossa equipe. Vamos agendar uma demonstração sem compromisso?',
+                    button: { text: 'Pedir um orçamento', link: '#contact' }
+                };
+            } else if (lowerInput.includes('contato') || lowerInput.includes('falar')) {
+                return {
+                    text: 'Para falar conosco, é só preencher nosso formulário de contato. Nossa equipe retornará o mais breve possível!',
+                    button: { text: 'Ir para o formulário', link: '#contact' }
+                };
+            } else if (lowerInput.includes('rpa') || lowerInput.includes('automação de processos')) {
+                return {
+                    text: 'Nossa solução de RPA ajuda a eliminar tarefas manuais e repetitivas, economizando tempo e reduzindo erros. É ideal para tarefas como preenchimento de formulários e extração de dados.',
+                    button: { text: 'Saber mais sobre serviços', link: '#services' }
+                };
+            } else if (lowerInput.includes('olá') || lowerInput.includes('oi') || lowerInput.includes('bom dia')) {
+                return { text: 'Olá! Que bom falar com você. Em que posso ajudar?' };
+            }
+             else {
+                return { text: 'Desculpe, não entendi sua pergunta. Sou um assistente virtual e meu conhecimento é limitado. Tente perguntar sobre nossos serviços, chatbots ou como entrar em contato.' };
+            }
+        };
+
+        const handleSendMessage = () => {
+            const userInput = aiChatInput.value.trim();
+            if (userInput) {
+                addMessage({ text: userInput }, 'user');
+                aiChatInput.value = '';
+                
+                const typingIndicator = document.createElement('div');
+                typingIndicator.textContent = 'digitando...';
+                typingIndicator.className = 'text-gray-400 text-xs italic p-2';
+                aiChatMessages.appendChild(typingIndicator);
+                aiChatMessages.scrollTop = aiChatMessages.scrollHeight;
+
+                setTimeout(() => {
+                    aiChatMessages.removeChild(typingIndicator);
+                    const aiResponse = getAiResponse(userInput);
+                    addMessage(aiResponse, 'ai');
+                }, 1200);
+            }
+        };
+
+        aiSendButton.addEventListener('click', handleSendMessage);
+        aiChatInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                handleSendMessage();
+            }
+        });
+
+        setTimeout(() => {
+             addMessage({ text: 'Olá! Sou o assistente virtual da Cortex Duo. Como posso te ajudar a inovar hoje?' }, 'ai');
+        }, 1000);
 
         // SCRIPT PARA MODAL DE CONTATO
         const contactModal = document.getElementById('contact-modal');
@@ -487,7 +634,7 @@
             button.addEventListener('click', (e) => {
                 e.preventDefault();
                 contactModal.classList.remove('hidden');
-                mobileMenu.classList.add('hidden'); // Fecha o menu mobile se estiver aberto
+                mobileMenu.classList.add('hidden');
             });
         });
 
@@ -498,22 +645,140 @@
         closeModalButton.addEventListener('click', closeModal);
 
         contactModal.addEventListener('click', (e) => {
-            // Fecha o modal somente se o clique for no fundo escuro
             if (e.target === contactModal) {
                 closeModal();
             }
         });
 
-        // NOVO SCRIPT PARA DEMONSTRAÇÃO DE CHAT
+        // NOVO SCRIPT PARA MODAL DE SERVIÇOS
+        const serviceModal = document.getElementById('service-modal');
+        const serviceCards = document.querySelectorAll('.service-card');
+        const closeServiceModalButton = document.getElementById('close-service-modal-button');
+        const serviceModalTitle = document.getElementById('service-modal-title');
+        const serviceModalImage = document.getElementById('service-modal-image');
+        const serviceModalDescription = document.getElementById('service-modal-description');
+        const serviceModalExamples = document.getElementById('service-modal-examples');
+
+        const servicesContent = {
+            atendimento: {
+                title: 'Chatbots de Atendimento 24/7',
+                image: 'https://placehold.co/600x400/0a192f/f97316?text=Atendimento',
+                description: 'Nossos chatbots de atendimento são projetados para serem a primeira linha de suporte da sua empresa. Eles operam 24/7, resolvendo instantaneamente as dúvidas mais comuns dos seus clientes, coletando informações importantes e, quando necessário, transferindo a conversa para um atendente humano de forma inteligente e sem atritos. Isso reduz o tempo de espera, aumenta a satisfação do cliente e libera sua equipe para focar em casos mais complexos.',
+                examples: [
+                    'Respostas automáticas a FAQs (Dúvidas Frequentes).',
+                    'Abertura e consulta de status de tickets de suporte.',
+                    'Guia de solução de problemas básicos (troubleshooting).',
+                    'Coleta de feedback e pesquisas de satisfação pós-atendimento.'
+                ]
+            },
+            vendas: {
+                title: 'Chatbots para Vendas e Leads',
+                image: 'https://placehold.co/600x400/0a192f/f97316?text=Vendas',
+                description: 'Transforme visitantes do seu site em clientes potenciais. Nossos chatbots de vendas agem como um assistente proativo, engajando usuários, entendendo suas necessidades através de perguntas qualificatórias e guiando-os pela jornada de compra. Eles podem agendar demonstrações, coletar informações de contato e até mesmo fechar vendas simples, tudo de forma automática.',
+                examples: [
+                    'Qualificação de leads com perguntas sobre orçamento, necessidade e prazo.',
+                    'Agendamento automático de reuniões na agenda da equipe de vendas.',
+                    'Recomendação de produtos com base nas respostas do usuário.',
+                    'Recuperação de carrinhos de compra abandonados com ofertas especiais.'
+                ]
+            },
+            rpa: {
+                title: 'Automação de Processos (RPA)',
+                image: 'https://placehold.co/600x400/0a192f/f97316?text=RPA',
+                description: "A Automação de Processos Robóticos (RPA) utiliza 'robôs' de software para executar tarefas repetitivas e baseadas em regras que antes eram feitas por humanos. Isso elimina o erro humano, acelera a execução de processos de back-office e libera seus colaboradores para atividades mais estratégicas e de maior valor para o negócio.",
+                examples: [
+                    'Preenchimento automático de planilhas e sistemas.',
+                    'Extração de dados de e-mails, PDFs e sites.',
+                    'Migração de dados entre sistemas que não possuem integração nativa.',
+                    'Processamento de faturas e ordens de compra.'
+                ]
+            },
+            ecommerce: {
+                title: 'IA para E-commerce',
+                image: 'https://placehold.co/600x400/0a192f/f97316?text=E-commerce',
+                description: 'Potencialize sua loja virtual com inteligência artificial. Nossas soluções para e-commerce vão além do básico, criando experiências de compra personalizadas que aumentam a conversão e a fidelidade do cliente. Analisamos o comportamento do consumidor para oferecer o produto certo na hora certa.',
+                examples: [
+                    "Sistemas de recomendação de produtos ('Quem comprou X, também comprou Y').",
+                    'Busca inteligente que entende a linguagem natural do cliente.',
+                    'Chatbots para rastreio de pedidos e gestão de trocas/devoluções.',
+                    'Personalização da vitrine da loja para cada usuário.'
+                ]
+            },
+            dados: {
+                title: 'Análise Preditiva e Dados',
+                image: 'https://placehold.co/600x400/0a192f/f97316?text=Dados',
+                description: 'Pare de reagir e comece a antecipar. Nossas soluções de análise preditiva usam algoritmos de machine learning para analisar seus dados históricos e identificar padrões, tendências e probabilidades futuras. Isso permite que sua empresa tome decisões mais informadas, otimize o estoque, preveja a demanda e identifique riscos antes que eles aconteçam.',
+                examples: [
+                    'Previsão de demanda de produtos para otimização de estoque.',
+                    'Análise de risco de churn (cancelamento) de clientes.',
+                    'Identificação de oportunidades de cross-sell e upsell.',
+                    'Modelagem de precificação dinâmica.'
+                ]
+            },
+            integracao: {
+                title: 'Integração com Sistemas',
+                image: 'https://placehold.co/600x400/0a192f/f97316?text=Integrações',
+                description: 'Uma automação eficiente depende de um ecossistema conectado. Garantimos que nossas soluções de IA e chatbots se comuniquem perfeitamente com as ferramentas que sua empresa já utiliza, como CRMs, ERPs, plataformas de e-commerce e APIs de terceiros. Criamos um fluxo de trabalho unificado, sem silos de informação.',
+                examples: [
+                    'Sincronização de leads capturados pelo chatbot com seu CRM (Salesforce, HubSpot, etc.).',
+                    'Abertura automática de pedidos no seu sistema ERP.',
+                    'Consulta de estoque em tempo real durante uma conversa com o cliente.',
+                    'Conexão com gateways de pagamento para finalizar compras no chat.'
+                ]
+            }
+        };
+
+        serviceCards.forEach(card => {
+            card.addEventListener('click', () => {
+                const serviceKey = card.dataset.service;
+                const content = servicesContent[serviceKey];
+
+                serviceModalTitle.textContent = content.title;
+                serviceModalImage.src = content.image;
+                serviceModalDescription.textContent = content.description;
+                
+                serviceModalExamples.innerHTML = ''; // Limpa exemplos anteriores
+                content.examples.forEach(exampleText => {
+                    const li = document.createElement('li');
+                    li.textContent = exampleText;
+                    serviceModalExamples.appendChild(li);
+                });
+
+                serviceModal.classList.remove('hidden');
+            });
+        });
+
+        const closeServiceModal = () => {
+            serviceModal.classList.add('hidden');
+        };
+
+        closeServiceModalButton.addEventListener('click', closeServiceModal);
+        serviceModal.addEventListener('click', (e) => {
+            if(e.target === serviceModal) {
+                closeServiceModal();
+            }
+        });
+
+
+        // SCRIPT PARA DEMONSTRAÇÃO DE CHAT
         const planSelectors = document.querySelectorAll('.plan-selector');
         const inteligenteOptions = document.getElementById('inteligente-options');
         const levelSelectors = document.querySelectorAll('.level-selector');
         const chatMessages = document.getElementById('chat-messages');
         const demoTitle = document.getElementById('demo-title');
         const demoDescription = document.getElementById('demo-description');
+        const dynamicDescriptionText = document.getElementById('dynamic-description-text');
 
         let currentPlan = 'essencial';
         let currentLevel = 1;
+
+        const planDescriptions = {
+            essencial: 'Este plano utiliza um chatbot baseado em regras fixas. É ideal para responder perguntas frequentes (FAQs) e executar tarefas simples com um fluxo pré-definido.',
+            inteligente: {
+                1: 'Este nível compreende texto, áudio e imagens, respondendo de forma inteligente e contextual. O bot pode manter conversas mais complexas e entender a intenção do usuário.',
+                2: 'Além de todas as capacidades do Nível 1, este chatbot pode realizar e receber ligações, e também gravar e enviar mensagens de áudio, oferecendo uma experiência de comunicação completa.'
+            }
+        };
 
         const chatContent = {
             essencial: {
@@ -556,16 +821,19 @@
             }
         };
 
-        function updateChatDemo() {
-            let content;
+        function updateChatDemoAndDescription() {
+            let chat, description;
             if (currentPlan === 'essencial') {
-                content = chatContent.essencial;
+                chat = chatContent.essencial;
+                description = planDescriptions.essencial;
             } else {
-                content = chatContent.inteligente[currentLevel];
+                chat = chatContent.inteligente[currentLevel];
+                description = planDescriptions.inteligente[currentLevel];
             }
-            demoTitle.textContent = content.title;
-            demoDescription.textContent = content.description;
-            chatMessages.innerHTML = content.messages;
+            demoTitle.textContent = chat.title;
+            demoDescription.textContent = chat.description;
+            chatMessages.innerHTML = chat.messages;
+            dynamicDescriptionText.textContent = description;
         }
 
         planSelectors.forEach(button => {
@@ -584,7 +852,7 @@
                 } else {
                     inteligenteOptions.classList.add('hidden');
                 }
-                updateChatDemo();
+                updateChatDemoAndDescription();
             });
         });
 
@@ -599,14 +867,13 @@
                 button.classList.add('bg-blue-500', 'text-white');
                 button.classList.remove('text-gray-600', 'dark:text-gray-300');
 
-                updateChatDemo();
+                updateChatDemoAndDescription();
             });
         });
 
         // Initial load
-        updateChatDemo();
+        updateChatDemoAndDescription();
 
     </script>
 </body>
 </html>
-
