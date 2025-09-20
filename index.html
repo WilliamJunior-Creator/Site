@@ -93,7 +93,7 @@
 
     <main>
         <!-- Seção Hero -->
-        <section class="hero-bg text-white">
+        <section data-video-time="0" class="hero-bg text-white page-section">
             <div class="container mx-auto px-6 py-24 text-center">
                 <h1 class="text-3xl sm:text-4xl md:text-6xl font-bold leading-tight mb-4">Revolucione seu Negócio com Automação e I.A.</h1>
                 <p class="text-lg md:text-xl text-gray-300 max-w-3xl mx-auto mb-8">Especialistas em criar chatbots inteligentes e soluções de automação que otimizam processos, reduzem custos e elevam a experiência do seu cliente.</p>
@@ -102,7 +102,7 @@
         </section>
 
         <!-- Seção de Serviços -->
-        <section id="services" class="py-20 bg-white/95 dark:bg-slate-800/95 backdrop-blur-sm">
+        <section id="services" data-video-time="5" class="py-20 bg-white/95 dark:bg-slate-800/95 backdrop-blur-sm page-section">
             <div class="container mx-auto px-6">
                 <div class="text-center mb-12">
                     <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold text-slate-900 dark:text-white">Nossas Soluções de Automação</h2>
@@ -157,7 +157,7 @@
         </section>
         
         <!-- NOVA Seção de Exemplos -->
-        <section id="examples" class="py-20 bg-slate-100/95 dark:bg-slate-900/95 backdrop-blur-sm">
+        <section id="examples" data-video-time="10" class="py-20 bg-slate-100/95 dark:bg-slate-900/95 backdrop-blur-sm page-section">
             <div class="container mx-auto px-6">
                 <div class="text-center mb-12">
                     <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold text-slate-900 dark:text-white">Veja a Mágica da IA em Ação</h2>
@@ -212,7 +212,7 @@
         </section>
 
         <!-- Seção de Cases de Sucesso -->
-        <section id="cases" class="py-20 bg-slate-900/90 backdrop-blur-sm">
+        <section id="cases" data-video-time="15" class="py-20 bg-slate-900/90 backdrop-blur-sm page-section">
             <div class="container mx-auto px-6">
                 <div class="text-center mb-12">
                     <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold text-white">Resultados Reais para Nossos Clientes</h2>
@@ -251,7 +251,7 @@
         </section>
 
         <!-- Seção Nosso Processo -->
-        <section id="process" class="py-20 bg-white/95 dark:bg-slate-800/95 backdrop-blur-sm">
+        <section id="process" data-video-time="20" class="py-20 bg-white/95 dark:bg-slate-800/95 backdrop-blur-sm page-section">
             <div class="container mx-auto px-6">
                 <div class="text-center mb-12">
                     <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold text-slate-900 dark:text-white">Nosso Caminho para o Sucesso</h2>
@@ -393,7 +393,7 @@
                     </div>
                 </div>
                 <div class="mt-8 lg:mt-0 lg:w-3/5">
-                    <form action="https://formsubmit.co/cortex.duo.ia@gmail.com" method="POST" class="space-y-4">
+                    <form id="contact-form" action="https://formsubmit.co/cortex.duo.ia@gmail.com" method="POST" class="space-y-4">
                         <!-- Configurações para o FormSubmit -->
                         <input type="hidden" name="_subject" value="Novo Contato do Portfólio Cortex Duo!">
                         <input type="hidden" name="_captcha" value="false">
@@ -449,12 +449,14 @@
                         <div>
                             <label for="modal-message" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Sua mensagem, me diga mais sobre o que deseja</label>
                             <textarea id="modal-message" name="message" rows="4" class="mt-1 block w-full bg-slate-50 dark:bg-slate-700 border-gray-300 dark:border-slate-600 rounded-md shadow-sm focus:ring-orange-500 focus:border-orange-500 p-2" required></textarea>
+                            <p id="message-error" class="text-red-500 text-sm mt-1 hidden"></p>
                         </div>
 
                         <div class="pt-2">
-                            <button type="submit" class="w-full bg-orange-500 text-white font-bold py-3 px-6 rounded-lg hover:bg-orange-600 transition-colors">
+                            <button type="submit" id="submit-button" class="w-full bg-orange-500 text-white font-bold py-3 px-6 rounded-lg hover:bg-orange-600 transition-colors">
                                 Enviar Mensagem
                             </button>
+                            <p id="form-success-message" class="text-green-500 text-center mt-4 hidden">Mensagem enviada com sucesso!</p>
                         </div>
                     </form>
                 </div>
@@ -647,6 +649,80 @@
         const contactModal = document.getElementById('contact-modal');
         const closeModalButton = document.getElementById('close-modal-button');
         const openModalButtons = document.querySelectorAll('a[href="#contact"]');
+        const contactForm = document.getElementById('contact-form');
+        const messageTextarea = document.getElementById('modal-message');
+        const messageError = document.getElementById('message-error');
+        const formSuccessMessage = document.getElementById('form-success-message');
+        const submitButton = document.getElementById('submit-button');
+
+
+        const validateMessage = (message) => {
+            const lowerCaseMessage = message.toLowerCase();
+            const spamKeywords = ['viagra', 'grátis', 'oferta', 'promoção', 'imperdível', 'clique aqui', 'renda extra', 'dinheiro fácil'];
+
+            if (message.length < 15) {
+                return { isValid: false, error: 'Sua mensagem é muito curta. Por favor, detalhe um pouco mais.' };
+            }
+            if (/(.)\1{5,}/.test(message)) {
+                return { isValid: false, error: 'Sua mensagem parece conter texto repetido sem sentido.' };
+            }
+            for (const keyword of spamKeywords) {
+                if (lowerCaseMessage.includes(keyword)) {
+                    return { isValid: false, error: 'Sua mensagem parece ser spam. Por favor, reformule.' };
+                }
+            }
+             if (!/[a-z pelo menos]{3,}/i.test(message)) { // Pelo menos uma palavra com 3+ letras
+                 return { isValid: false, error: 'Por favor, escreva uma mensagem mais clara.' };
+            }
+            
+            return { isValid: true, error: '' };
+        };
+
+        contactForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            // Valida a mensagem
+            const validation = validateMessage(messageTextarea.value);
+            if (!validation.isValid) {
+                messageError.textContent = validation.error;
+                messageError.classList.remove('hidden');
+                return;
+            }
+            
+            messageError.classList.add('hidden');
+            submitButton.disabled = true;
+            submitButton.textContent = 'Enviando...';
+
+            const formData = new FormData(contactForm);
+            
+            try {
+                const response = await fetch(contactForm.action, {
+                    method: 'POST',
+                    body: formData,
+                    headers: {
+                        'Accept': 'application/json'
+                    }
+                });
+
+                if (response.ok) {
+                    formSuccessMessage.classList.remove('hidden');
+                    contactForm.reset();
+                    setTimeout(() => {
+                        formSuccessMessage.classList.add('hidden');
+                        closeModal();
+                    }, 3000);
+                } else {
+                    throw new Error('Falha no envio');
+                }
+            } catch (error) {
+                messageError.textContent = 'Ocorreu um erro ao enviar. Tente novamente mais tarde.';
+                messageError.classList.remove('hidden');
+            } finally {
+                submitButton.disabled = false;
+                submitButton.textContent = 'Enviar Mensagem';
+            }
+        });
+
 
         openModalButtons.forEach(button => {
             button.addEventListener('click', (e) => {
@@ -891,17 +967,25 @@
 
         // SCRIPT DO VÍDEO DE FUNDO
         const video = document.getElementById('bg-video');
+        const sections = document.querySelectorAll('.page-section');
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const time = entry.target.getAttribute('data-video-time');
+                    if (video.readyState >= 3) { // Ensure video data is loaded
+                        video.currentTime = time;
+                    }
+                }
+            });
+        }, { threshold: 0.5 }); // A seção precisa estar 50% visível
+
+        sections.forEach(section => {
+            observer.observe(section);
+        });
+
         video.addEventListener('loadedmetadata', function() {
-          video.pause(); // Garante que o vídeo não toque sozinho
-          window.addEventListener('scroll', function() {
-            const scrollTop = document.documentElement.scrollTop;
-            const maxScrollTop = document.documentElement.scrollHeight - window.innerHeight;
-            const scrollFraction = scrollTop / maxScrollTop;
-            video.currentTime = Math.min(
-              video.duration * scrollFraction,
-              video.duration
-            );
-          });
+          video.pause();
         });
 
 
