@@ -393,72 +393,76 @@
                     </div>
                 </div>
                 <div class="mt-8 lg:mt-0 lg:w-3/5">
-                    <form id="contact-form" action="https://formsubmit.co/cortex.duo.ia@gmail.com" method="POST" class="space-y-4">
-                        <!-- Configurações para o FormSubmit -->
-                        <input type="hidden" name="_subject" value="Novo Contato do Portfólio Cortex Duo!">
-                        <input type="hidden" name="_captcha" value="false">
+                    <div id="form-container">
+                        <form id="contact-form" class="space-y-4">
+                            <!-- Ação do formulário será tratada via JS -->
 
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                            <div>
-                                <label for="modal-name" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Nome</label>
-                                <input type="text" id="modal-name" name="name" class="mt-1 block w-full bg-slate-50 dark:bg-slate-700 border-gray-300 dark:border-slate-600 rounded-md shadow-sm focus:ring-orange-500 focus:border-orange-500 p-2" required>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <div>
+                                    <label for="modal-name" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Nome</label>
+                                    <input type="text" id="modal-name" name="name" class="mt-1 block w-full bg-slate-50 dark:bg-slate-700 border-gray-300 dark:border-slate-600 rounded-md shadow-sm focus:ring-orange-500 focus:border-orange-500 p-2" required>
+                                </div>
+                                <div>
+                                    <label for="modal-company" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Empresa</label>
+                                    <input type="text" id="modal-company" name="company" class="mt-1 block w-full bg-slate-50 dark:bg-slate-700 border-gray-300 dark:border-slate-600 rounded-md shadow-sm focus:ring-orange-500 focus:border-orange-500 p-2" required>
+                                </div>
+                            </div>
+                            
+                             <div>
+                                <label class="block text-sm font-medium text-gray-700 dark:text-gray-300">Tipo de E-mail</label>
+                                <div class="mt-2 flex items-center space-x-4 text-sm text-gray-600 dark:text-gray-300">
+                                    <label class="flex items-center"><input type="radio" name="email_type" value="pessoal" class="focus:ring-orange-500 h-4 w-4 text-orange-600 border-gray-300 dark:border-slate-600 dark:bg-slate-700" required> <span class="ml-2">Pessoal</span></label>
+                                    <label class="flex items-center"><input type="radio" name="email_type" value="profissional" class="focus:ring-orange-500 h-4 w-4 text-orange-600 border-gray-300 dark:border-slate-600 dark:bg-slate-700"> <span class="ml-2">Profissional</span></label>
+                                </div>
                             </div>
                             <div>
-                                <label for="modal-company" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Empresa</label>
-                                <input type="text" id="modal-company" name="company" class="mt-1 block w-full bg-slate-50 dark:bg-slate-700 border-gray-300 dark:border-slate-600 rounded-md shadow-sm focus:ring-orange-500 focus:border-orange-500 p-2" required>
+                                <label for="modal-email" class="block text-sm font-medium text-gray-700 dark:text-gray-300">E-mail</label>
+                                <input type="email" id="modal-email" name="email" class="mt-1 block w-full bg-slate-50 dark:bg-slate-700 border-gray-300 dark:border-slate-600 rounded-md shadow-sm focus:ring-orange-500 focus:border-orange-500 p-2" required>
                             </div>
-                        </div>
-                        
-                         <div>
-                            <label class="block text-sm font-medium text-gray-700 dark:text-gray-300">Tipo de E-mail</label>
-                            <div class="mt-2 flex items-center space-x-4 text-sm text-gray-600 dark:text-gray-300">
-                                <label class="flex items-center"><input type="radio" name="email_type" value="pessoal" class="focus:ring-orange-500 h-4 w-4 text-orange-600 border-gray-300 dark:border-slate-600 dark:bg-slate-700" required> <span class="ml-2">Pessoal</span></label>
-                                <label class="flex items-center"><input type="radio" name="email_type" value="profissional" class="focus:ring-orange-500 h-4 w-4 text-orange-600 border-gray-300 dark:border-slate-600 dark:bg-slate-700"> <span class="ml-2">Profissional</span></label>
+                           
+                             <div>
+                                <label class="block text-sm font-medium text-gray-700 dark:text-gray-300">Tipo de WhatsApp</label>
+                                <div class="mt-2 flex items-center space-x-4 text-sm text-gray-600 dark:text-gray-300">
+                                    <label class="flex items-center"><input type="radio" name="whatsapp_type" value="comum" class="focus:ring-orange-500 h-4 w-4 text-orange-600 border-gray-300 dark:border-slate-600 dark:bg-slate-700" required> <span class="ml-2">Comum</span></label>
+                                    <label class="flex items-center"><input type="radio" name="whatsapp_type" value="business" class="focus:ring-orange-500 h-4 w-4 text-orange-600 border-gray-300 dark:border-slate-600 dark:bg-slate-700"> <span class="ml-2">Business</span></label>
+                                </div>
                             </div>
-                        </div>
-                        <div>
-                            <label for="modal-email" class="block text-sm font-medium text-gray-700 dark:text-gray-300">E-mail</label>
-                            <input type="email" id="modal-email" name="email" class="mt-1 block w-full bg-slate-50 dark:bg-slate-700 border-gray-300 dark:border-slate-600 rounded-md shadow-sm focus:ring-orange-500 focus:border-orange-500 p-2" required>
-                        </div>
-                       
-                         <div>
-                            <label class="block text-sm font-medium text-gray-700 dark:text-gray-300">Tipo de WhatsApp</label>
-                            <div class="mt-2 flex items-center space-x-4 text-sm text-gray-600 dark:text-gray-300">
-                                <label class="flex items-center"><input type="radio" name="whatsapp_type" value="comum" class="focus:ring-orange-500 h-4 w-4 text-orange-600 border-gray-300 dark:border-slate-600 dark:bg-slate-700" required> <span class="ml-2">Comum</span></label>
-                                <label class="flex items-center"><input type="radio" name="whatsapp_type" value="business" class="focus:ring-orange-500 h-4 w-4 text-orange-600 border-gray-300 dark:border-slate-600 dark:bg-slate-700"> <span class="ml-2">Business</span></label>
+                             <div>
+                                <label for="modal-whatsapp" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Número de WhatsApp</label>
+                                <input type="tel" id="modal-whatsapp" name="whatsapp" class="mt-1 block w-full bg-slate-50 dark:bg-slate-700 border-gray-300 dark:border-slate-600 rounded-md shadow-sm focus:ring-orange-500 focus:border-orange-500 p-2" placeholder="(XX) XXXXX-XXXX" required>
                             </div>
-                        </div>
-                         <div>
-                            <label for="modal-whatsapp" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Número de WhatsApp</label>
-                            <input type="tel" id="modal-whatsapp" name="whatsapp" class="mt-1 block w-full bg-slate-50 dark:bg-slate-700 border-gray-300 dark:border-slate-600 rounded-md shadow-sm focus:ring-orange-500 focus:border-orange-500 p-2" placeholder="(XX) XXXXX-XXXX" required>
-                        </div>
-                       
-                        <div>
-                            <label for="modal-service" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Serviço de Interesse</label>
-                            <select id="modal-service" name="service" class="mt-1 block w-full bg-slate-50 dark:bg-slate-700 border-gray-300 dark:border-slate-600 rounded-md shadow-sm focus:ring-orange-500 focus:border-orange-500 p-2" required>
-                                <option value="">Selecione um serviço</option>
-                                <option>Chatbots (Atendimento, Vendas, Leads)</option>
-                                <option>Automação de Processos (RPA)</option>
-                                <option>IA para E-commerce</option>
-                                <option>Análise Preditiva e Dados</option>
-                                <option>Integração com Sistemas</option>
-                                <option>Outro</option>
-                            </select>
-                        </div>
-                       
-                        <div>
-                            <label for="modal-message" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Sua mensagem, me diga mais sobre o que deseja</label>
-                            <textarea id="modal-message" name="message" rows="4" class="mt-1 block w-full bg-slate-50 dark:bg-slate-700 border-gray-300 dark:border-slate-600 rounded-md shadow-sm focus:ring-orange-500 focus:border-orange-500 p-2" required></textarea>
-                            <p id="message-error" class="text-red-500 text-sm mt-1 hidden"></p>
-                        </div>
+                           
+                            <div>
+                                <label for="modal-service" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Serviço de Interesse</label>
+                                <select id="modal-service" name="service" class="mt-1 block w-full bg-slate-50 dark:bg-slate-700 border-gray-300 dark:border-slate-600 rounded-md shadow-sm focus:ring-orange-500 focus:border-orange-500 p-2" required>
+                                    <option value="">Selecione um serviço</option>
+                                    <option>Chatbots (Atendimento, Vendas, Leads)</option>
+                                    <option>Automação de Processos (RPA)</option>
+                                    <option>IA para E-commerce</option>
+                                    <option>Análise Preditiva e Dados</option>
+                                    <option>Integração com Sistemas</option>
+                                    <option>Outro</option>
+                                </select>
+                            </div>
+                           
+                            <div>
+                                <label for="modal-message" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Sua mensagem, me diga mais sobre o que deseja</label>
+                                <textarea id="modal-message" name="message" rows="4" class="mt-1 block w-full bg-slate-50 dark:bg-slate-700 border-gray-300 dark:border-slate-600 rounded-md shadow-sm focus:ring-orange-500 focus:border-orange-500 p-2" required></textarea>
+                                <p id="message-error" class="text-red-500 text-sm mt-1 hidden"></p>
+                            </div>
 
-                        <div class="pt-2">
-                            <button type="submit" id="submit-button" class="w-full bg-orange-500 text-white font-bold py-3 px-6 rounded-lg hover:bg-orange-600 transition-colors">
-                                Enviar Mensagem
-                            </button>
-                            <p id="form-success-message" class="text-green-500 text-center mt-4 hidden">Mensagem enviada com sucesso!</p>
-                        </div>
-                    </form>
+                            <div class="pt-2">
+                                <button type="submit" id="submit-button" class="w-full bg-orange-500 text-white font-bold py-3 px-6 rounded-lg hover:bg-orange-600 transition-colors">
+                                    Enviar Mensagem
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                    <div id="success-message-container" class="hidden text-center py-16">
+                        <svg class="w-16 h-16 mx-auto text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                        <h3 class="text-2xl font-bold text-slate-900 dark:text-white mt-4">Mensagem Enviada!</h3>
+                        <p class="text-gray-600 dark:text-gray-400 mt-2">Obrigado por entrar em contato. Retornaremos em breve.</p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -650,9 +654,10 @@
         const closeModalButton = document.getElementById('close-modal-button');
         const openModalButtons = document.querySelectorAll('a[href="#contact"]');
         const contactForm = document.getElementById('contact-form');
+        const formContainer = document.getElementById('form-container');
+        const successMessageContainer = document.getElementById('success-message-container');
         const messageTextarea = document.getElementById('modal-message');
         const messageError = document.getElementById('message-error');
-        const formSuccessMessage = document.getElementById('form-success-message');
         const submitButton = document.getElementById('submit-button');
 
 
@@ -671,7 +676,7 @@
                     return { isValid: false, error: 'Sua mensagem parece ser spam. Por favor, reformule.' };
                 }
             }
-             if (!/[a-z pelo menos]{3,}/i.test(message)) { // Pelo menos uma palavra com 3+ letras
+             if (!/[a-z]{3,}/i.test(message)) { // Pelo menos uma palavra com 3+ letras
                  return { isValid: false, error: 'Por favor, escreva uma mensagem mais clara.' };
             }
             
@@ -694,9 +699,10 @@
             submitButton.textContent = 'Enviando...';
 
             const formData = new FormData(contactForm);
+            const formAction = 'https://formsubmit.co/cortex.duo.ia@gmail.com'; // Definindo a URL de ação aqui
             
             try {
-                const response = await fetch(contactForm.action, {
+                const response = await fetch(formAction, {
                     method: 'POST',
                     body: formData,
                     headers: {
@@ -705,11 +711,17 @@
                 });
 
                 if (response.ok) {
-                    formSuccessMessage.classList.remove('hidden');
-                    contactForm.reset();
+                    formContainer.classList.add('hidden');
+                    successMessageContainer.classList.remove('hidden');
+
                     setTimeout(() => {
-                        formSuccessMessage.classList.add('hidden');
                         closeModal();
+                        // Reset form state after modal closes
+                         setTimeout(() => {
+                            formContainer.classList.remove('hidden');
+                            successMessageContainer.classList.add('hidden');
+                            contactForm.reset();
+                        }, 500); // Delay to reset form after modal is closed
                     }, 3000);
                 } else {
                     throw new Error('Falha no envio');
