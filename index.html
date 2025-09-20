@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cortex Duo</title>
-    
+    <link rel="icon" type="image/png" href="https://i.ibb.co/mS4p0Gz/cortex-Photoroom.png">
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -50,6 +50,9 @@
             opacity: 0;
             visibility: hidden;
         }
+        .idea-card {
+            border-left: 4px solid #f97316; /* Laranja */
+        }
     </style>
 </head>
 <body class="bg-gray-100 dark:bg-slate-900 text-gray-800 dark:text-gray-200">
@@ -70,6 +73,7 @@
             </a>
             <div class="hidden md:flex space-x-8 items-center">
                 <a href="#services" class="text-gray-300 hover:text-orange-400 transition-colors">Serviços</a>
+                <a href="#brainstorm" class="text-gray-300 hover:text-orange-400 transition-colors">Brainstorm IA</a>
                 <a href="#examples" class="text-gray-300 hover:text-orange-400 transition-colors">Exemplos</a>
                 <a href="#cases" class="text-gray-300 hover:text-orange-400 transition-colors">Cases de Sucesso</a>
                 <a href="#process" class="text-gray-300 hover:text-orange-400 transition-colors">Nosso Processo</a>
@@ -84,6 +88,7 @@
         <!-- Menu Mobile -->
         <div id="mobile-menu" class="hidden md:hidden px-6 pb-4">
             <a href="#services" class="block py-2 text-gray-300 hover:text-orange-400">Serviços</a>
+            <a href="#brainstorm" class="block py-2 text-gray-300 hover:text-orange-400">Brainstorm IA</a>
             <a href="#examples" class="block py-2 text-gray-300 hover:text-orange-400">Exemplos</a>
             <a href="#cases" class="block py-2 text-gray-300 hover:text-orange-400">Cases de Sucesso</a>
             <a href="#process" class="block py-2 text-gray-300 hover:text-orange-400">Nosso Processo</a>
@@ -155,9 +160,30 @@
                 </div>
             </div>
         </section>
+
+        <!-- Seção Brainstorm IA -->
+        <section id="brainstorm" data-video-time="8" class="py-20 bg-slate-100/95 dark:bg-slate-900/95 backdrop-blur-sm page-section">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-12">
+                    <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold text-slate-900 dark:text-white">Não sabe por onde começar?</h2>
+                    <p class="text-gray-600 dark:text-gray-400 mt-4 max-w-2xl mx-auto">Descreva seu tipo de negócio e nossa IA irá gerar ideias de automação personalizadas para você.</p>
+                </div>
+                <div class="max-w-3xl mx-auto bg-white dark:bg-slate-800 p-8 rounded-lg shadow-lg">
+                    <div class="flex flex-col sm:flex-row gap-4">
+                        <input type="text" id="business-type-input" placeholder="Ex: cafeteria, clínica médica, e-commerce de moda" class="w-full bg-slate-50 dark:bg-slate-700 border-gray-300 dark:border-slate-600 rounded-md shadow-sm focus:ring-orange-500 focus:border-orange-500 p-3">
+                        <button id="generate-ideas-button" class="bg-orange-500 text-white font-bold py-3 px-6 rounded-lg hover:bg-orange-600 transition-colors flex items-center justify-center gap-2 whitespace-nowrap">
+                            Gerar Ideias com IA ✨
+                        </button>
+                    </div>
+                    <div id="ideas-output" class="mt-8 space-y-6">
+                        <!-- Loading spinner and results will be injected here -->
+                    </div>
+                </div>
+            </div>
+        </section>
         
         <!-- NOVA Seção de Exemplos -->
-        <section id="examples" data-video-time="10" class="py-20 bg-slate-100/95 dark:bg-slate-900/95 backdrop-blur-sm page-section">
+        <section id="examples" data-video-time="12" class="py-20 bg-white/95 dark:bg-slate-800/95 backdrop-blur-sm page-section">
             <div class="container mx-auto px-6">
                 <div class="text-center mb-12">
                     <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold text-slate-900 dark:text-white">Veja a Mágica da IA em Ação</h2>
@@ -212,7 +238,7 @@
         </section>
 
         <!-- Seção de Cases de Sucesso -->
-        <section id="cases" data-video-time="15" class="py-20 bg-slate-900/90 backdrop-blur-sm page-section">
+        <section id="cases" data-video-time="17" class="py-20 bg-slate-900/90 backdrop-blur-sm page-section">
             <div class="container mx-auto px-6">
                 <div class="text-center mb-12">
                     <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold text-white">Resultados Reais para Nossos Clientes</h2>
@@ -251,7 +277,7 @@
         </section>
 
         <!-- Seção Nosso Processo -->
-        <section id="process" data-video-time="20" class="py-20 bg-white/95 dark:bg-slate-800/95 backdrop-blur-sm page-section">
+        <section id="process" data-video-time="22" class="py-20 bg-white/95 dark:bg-slate-800/95 backdrop-blur-sm page-section">
             <div class="container mx-auto px-6">
                 <div class="text-center mb-12">
                     <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold text-slate-900 dark:text-white">Nosso Caminho para o Sucesso</h2>
@@ -444,11 +470,35 @@
                                     <option>Outro</option>
                                 </select>
                             </div>
-                           
-                            <div>
+
+                            <!-- Normal Message Container -->
+                            <div id="message-container">
                                 <label for="modal-message" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Sua mensagem, me diga mais sobre o que deseja</label>
-                                <textarea id="modal-message" name="message" rows="4" class="mt-1 block w-full bg-slate-50 dark:bg-slate-700 border-gray-300 dark:border-slate-600 rounded-md shadow-sm focus:ring-orange-500 focus:border-orange-500 p-2" required></textarea>
+                                <textarea id="modal-message" name="message" rows="4" class="mt-1 block w-full bg-slate-50 dark:bg-slate-700 border-gray-300 dark:border-slate-600 rounded-md shadow-sm focus:ring-orange-500 focus:border-orange-500 p-2"></textarea>
                                 <p id="message-error" class="text-red-500 text-sm mt-1 hidden"></p>
+                            </div>
+                            
+                            <!-- Idea Message Container (initially hidden) -->
+                            <div id="idea-message-container" class="hidden space-y-4">
+                                <div>
+                                    <label class="block text-sm font-medium text-gray-700 dark:text-gray-300">Ideia de Automação Selecionada:</label>
+                                    <div id="selected-idea-display" class="mt-1 block w-full bg-slate-100 dark:bg-slate-700 border border-gray-300 dark:border-slate-600 rounded-md p-3 text-sm">
+                                        <!-- Idea content injected by JS -->
+                                    </div>
+                                </div>
+
+                                <div>
+                                    <label class="flex items-center cursor-pointer">
+                                        <input type="checkbox" id="add-extra-message-checkbox" class="focus:ring-orange-500 h-4 w-4 text-orange-600 border-gray-300 rounded">
+                                        <span class="ml-2 text-sm text-gray-600 dark:text-gray-300">Adicionar uma mensagem complementar?</span>
+                                    </label>
+                                </div>
+
+                                <div id="extra-message-wrapper" class="hidden">
+                                     <label for="extra-message-textarea" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Sua mensagem adicional:</label>
+                                    <textarea id="extra-message-textarea" name="extra_message" rows="3" class="mt-1 block w-full bg-slate-50 dark:bg-slate-700 border-gray-300 dark:border-slate-600 rounded-md shadow-sm focus:ring-orange-500 focus:border-orange-500 p-2"></textarea>
+                                    <p id="extra-message-error" class="text-red-500 text-sm mt-1 hidden"></p>
+                                </div>
                             </div>
 
                             <div class="pt-2">
@@ -507,6 +557,8 @@
 
 
     <script>
+        const apiKey = ""; // Chave de API do Gemini (deixe em branco)
+
         // Script para menu mobile
         const mobileMenuButton = document.getElementById('mobile-menu-button');
         const mobileMenu = document.getElementById('mobile-menu');
@@ -529,6 +581,7 @@
         const aiChatMessages = document.getElementById('ai-chat-messages');
         const aiChatInput = document.getElementById('ai-chat-input');
         const aiSendButton = document.getElementById('ai-send-button');
+        let chatHistory = [];
 
         chatWidgetButton.addEventListener('click', () => {
             chatWidgetWindow.classList.toggle('active');
@@ -545,19 +598,31 @@
                 messageDiv.className = 'bg-gray-200 dark:bg-slate-600 text-gray-800 dark:text-gray-200 p-2 rounded-lg rounded-br-none ml-auto max-w-[85%] mb-2 text-right break-words';
             } else { // sender === 'ai'
                 const textNode = document.createElement('span');
-                textNode.textContent = messageData.text;
+                
+                // Parse for button token
+                const buttonRegex = /\[BUTTON:(.+?)\|(.+?)\]/g;
+                const buttonMatch = buttonRegex.exec(messageData.text);
+                
+                let cleanText = messageData.text;
+
+                if(buttonMatch){
+                    cleanText = messageData.text.replace(buttonRegex, '').trim();
+                }
+
+                textNode.textContent = cleanText;
                 messageDiv.appendChild(textNode);
                 messageDiv.className = 'bg-orange-500 text-white p-2 rounded-lg rounded-bl-none max-w-[85%] mb-2 break-words';
 
-                if (messageData.button) {
+                if (buttonMatch) {
+                    const [, buttonText, buttonLink] = buttonMatch;
                     const button = document.createElement('button');
-                    button.textContent = messageData.button.text;
+                    button.textContent = buttonText;
                     button.className = 'block w-full text-left bg-orange-400 dark:bg-orange-600 hover:bg-orange-300 dark:hover:bg-orange-500 rounded-md p-2 mt-2 font-semibold transition-colors text-sm';
                     button.onclick = () => {
-                        if (messageData.button.link === '#contact') {
+                        if (buttonLink === '#contact') {
                             contactModal.classList.remove('hidden');
                         } else {
-                            const targetElement = document.querySelector(messageData.button.link);
+                            const targetElement = document.querySelector(buttonLink);
                             if (targetElement) {
                                 targetElement.scrollIntoView({ behavior: 'smooth' });
                             }
@@ -571,54 +636,51 @@
             aiChatMessages.scrollTop = aiChatMessages.scrollHeight;
         };
         
-        const getAiResponse = (input) => {
-            const lowerInput = input.toLowerCase();
-            
-            // Resposta aprimorada sobre a empresa
-            if (lowerInput.includes('cortex duo') || (lowerInput.includes('o que') && (lowerInput.includes('faz') || lowerInput.includes('fazem'))) || lowerInput.includes('sobre a empresa')) {
-                return {
-                    text: 'A Cortex Duo é especialista em transformar negócios com automação e Inteligência Artificial. Nós criamos soluções como chatbots inteligentes e automação de processos (RPA) para otimizar operações, reduzir custos e melhorar a experiência do cliente. Quer conhecer nossas principais soluções?',
-                    button: { text: 'Sim, me mostre os serviços', link: '#services' }
-                };
-            }
-            
-            if (lowerInput.includes('serviço') || lowerInput.includes('soluç') || lowerInput.includes('produto')) {
-                return {
-                    text: 'Oferecemos diversas soluções de automação, incluindo Chatbots, Automação de Processos (RPA) e IA para E-commerce. Gostaria de ver mais detalhes?',
-                    button: { text: 'Ver todos os serviços', link: '#services' }
-                };
-            } else if (lowerInput.includes('chatbot') || lowerInput.includes('exemplo')) {
-                return {
-                    text: 'Nossos chatbots são super versáteis! Temos desde planos mais simples até IAs avançadas que podem até fazer ligações. Quer ver como eles funcionam na prática?',
-                    button: { text: 'Ver exemplos de chatbots', link: '#examples' }
-                };
-            } else if (lowerInput.includes('preço') || lowerInput.includes('valor') || lowerInput.includes('custo') || lowerInput.includes('orçamento')) {
-                return {
-                    text: 'Nossos preços são personalizados. A melhor forma de saber o valor é conversando com nossa equipe. Vamos agendar uma demonstração sem compromisso?',
-                    button: { text: 'Pedir um orçamento', link: '#contact' }
-                };
-            } else if (lowerInput.includes('contato') || lowerInput.includes('falar') || lowerInput.includes('telefone') || lowerInput.includes('email')) {
-                return {
-                    text: 'Para falar conosco, é só preencher nosso formulário de contato. Nossa equipe retornará o mais breve possível!',
-                    button: { text: 'Ir para o formulário', link: '#contact' }
-                };
-            } else if (lowerInput.includes('rpa') || lowerInput.includes('automação de processos')) {
-                return {
-                    text: 'Nossa solução de RPA ajuda a eliminar tarefas manuais e repetitivas, economizando tempo e reduzindo erros. É ideal para tarefas como preenchimento de formulários e extração de dados.',
-                    button: { text: 'Saber mais sobre serviços', link: '#services' }
-                };
-            } else if (lowerInput.includes('olá') || lowerInput.includes('oi') || lowerInput.includes('bom dia') || lowerInput.includes('boa tarde') || lowerInput.includes('boa noite')) {
-                return { text: 'Olá! Que bom falar com você. Em que posso ajudar?' };
-            }
-             else {
-                return { 
-                    text: 'Desculpe, não entendi sua pergunta. Sou um assistente virtual e meu conhecimento é limitado. Posso te ajudar com informações sobre nossos serviços, exemplos de chatbots ou como entrar em contato.',
-                    button: { text: 'Ver nossos serviços', link: '#services' }
-                };
-            }
-        };
+        async function getGeminiResponse(prompt) {
+             const systemPrompt = "Você é Cortez, o assistente virtual da Cortex Duo, uma empresa especialista em automação com Inteligência Artificial. Sua personalidade é prestativa, profissional e entusiasmada com tecnologia. Sua missão é ajudar os usuários a entenderem os serviços da Cortex Duo e guiá-los pelo site. Mantenha as respostas concisas (no máximo 3 frases). Se a pergunta for sobre serviços, exemplos, preços ou contato, inclua no final da sua resposta o token especial [BUTTON:Texto do Botão|#id-da-secao]. Os IDs disponíveis são: #services, #brainstorm, #examples, #cases, #process, #contact. Não invente informações. Se não souber a resposta, diga que é um assistente virtual com conhecimento limitado e sugira que o usuário entre em contato com a equipe usando o token [BUTTON:Fale com a equipe|#contact].";
 
-        const handleSendMessage = () => {
+            let apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-05-20:generateContent`;
+             if (apiKey) {
+                apiUrl += `?key=${apiKey}`;
+            }
+            
+            const payload = {
+                contents: [...chatHistory, { parts: [{ text: prompt }] }],
+                 systemInstruction: {
+                    parts: [{ text: systemPrompt }]
+                },
+            };
+
+            try {
+                const response = await fetch(apiUrl, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
+
+                if (!response.ok) {
+                    console.error("API Error:", response.status, await response.text());
+                    return "Desculpe, estou com problemas para me conectar no momento. Por favor, tente novamente mais tarde.";
+                }
+
+                const result = await response.json();
+                const text = result.candidates?.[0]?.content?.parts?.[0]?.text;
+                
+                if (text) {
+                    // Update history
+                    chatHistory.push({ role: 'user', parts: [{ text: prompt }] });
+                    chatHistory.push({ role: 'model', parts: [{ text: text }] });
+                    return text;
+                } else {
+                     return "Não consegui gerar uma resposta. Tente reformular sua pergunta.";
+                }
+            } catch(error) {
+                console.error("Fetch Error:", error);
+                return "Ocorreu um erro de conexão. Verifique sua rede e tente novamente.";
+            }
+        }
+
+        const handleSendMessage = async () => {
             const userInput = aiChatInput.value.trim();
             if (userInput) {
                 addMessage({ text: userInput }, 'user');
@@ -630,11 +692,10 @@
                 aiChatMessages.appendChild(typingIndicator);
                 aiChatMessages.scrollTop = aiChatMessages.scrollHeight;
 
-                setTimeout(() => {
-                    aiChatMessages.removeChild(typingIndicator);
-                    const aiResponse = getAiResponse(userInput);
-                    addMessage(aiResponse, 'ai');
-                }, 1200);
+                const aiResponse = await getGeminiResponse(userInput);
+
+                aiChatMessages.removeChild(typingIndicator);
+                addMessage({text: aiResponse}, 'ai');
             }
         };
 
@@ -644,10 +705,14 @@
                 handleSendMessage();
             }
         });
-
+        
+         // Add initial AI message
         setTimeout(() => {
-             addMessage({ text: 'Olá! Sou o assistente virtual da Cortex Duo. Como posso te ajudar a inovar hoje?' }, 'ai');
+            const initialAiMessage = 'Olá! Sou o Cortez, assistente virtual da Cortex Duo. Como posso te ajudar a inovar hoje?';
+            addMessage({ text: initialAiMessage }, 'ai');
+            chatHistory.push({ role: 'model', parts: [{ text: initialAiMessage }] });
         }, 1000);
+
 
         // SCRIPT PARA MODAL DE CONTATO
         const contactModal = document.getElementById('contact-modal');
@@ -660,6 +725,13 @@
         const messageError = document.getElementById('message-error');
         const submitButton = document.getElementById('submit-button');
 
+        const messageContainer = document.getElementById('message-container');
+        const ideaMessageContainer = document.getElementById('idea-message-container');
+        const selectedIdeaDisplay = document.getElementById('selected-idea-display');
+        const addExtraMessageCheckbox = document.getElementById('add-extra-message-checkbox');
+        const extraMessageWrapper = document.getElementById('extra-message-wrapper');
+        const extraMessageTextarea = document.getElementById('extra-message-textarea');
+        const extraMessageError = document.getElementById('extra-message-error');
 
         const validateMessage = (message) => {
             const lowerCaseMessage = message.toLowerCase();
@@ -683,28 +755,83 @@
             return { isValid: true, error: '' };
         };
 
+        function resetContactForm() {
+            contactForm.reset();
+            formContainer.classList.remove('hidden');
+            successMessageContainer.classList.add('hidden');
+            messageContainer.classList.remove('hidden');
+            ideaMessageContainer.classList.add('hidden');
+            extraMessageWrapper.classList.add('hidden');
+            addExtraMessageCheckbox.checked = false;
+            messageError.classList.add('hidden');
+            extraMessageError.classList.add('hidden');
+            // Make sure the required attribute is on the correct textarea
+            messageTextarea.required = true;
+            extraMessageTextarea.required = false;
+        }
+
         contactForm.addEventListener('submit', async (e) => {
             e.preventDefault();
-            
-            // Valida a mensagem
-            const validation = validateMessage(messageTextarea.value);
-            if (!validation.isValid) {
-                messageError.textContent = validation.error;
-                messageError.classList.remove('hidden');
+
+            let finalMessageContent = '';
+            let isFormValid = true;
+            let validationResult;
+
+            // Check which form mode is active
+            if (!ideaMessageContainer.classList.contains('hidden')) { // Idea mode
+                const ideaTitle = selectedIdeaDisplay.querySelector('strong').textContent;
+                const ideaDescription = selectedIdeaDisplay.querySelector('p').textContent;
+                finalMessageContent = `Tenho interesse na seguinte ideia de automação:\n\nTítulo: ${ideaTitle}\nDescrição: ${ideaDescription}`;
+                
+                if (addExtraMessageCheckbox.checked) {
+                    const extraMessage = extraMessageTextarea.value;
+                    validationResult = validateMessage(extraMessage);
+                    if (!validationResult.isValid) {
+                        extraMessageError.textContent = validationResult.error;
+                        extraMessageError.classList.remove('hidden');
+                        isFormValid = false;
+                    } else {
+                        extraMessageError.classList.add('hidden');
+                        finalMessageContent += `\n\n---\n\nMensagem Adicional:\n${extraMessage}`;
+                    }
+                }
+            } else { // Normal mode
+                const message = messageTextarea.value;
+                validationResult = validateMessage(message);
+                if (!validationResult.isValid) {
+                    messageError.textContent = validationResult.error;
+                    messageError.classList.remove('hidden');
+                    isFormValid = false;
+                } else {
+                    messageError.classList.add('hidden');
+                    finalMessageContent = message;
+                }
+            }
+
+            if (!isFormValid) {
                 return;
             }
             
-            messageError.classList.add('hidden');
             submitButton.disabled = true;
             submitButton.textContent = 'Enviando...';
+            
+            const baseFormData = new FormData(contactForm);
+            const finalFormData = new FormData();
 
-            const formData = new FormData(contactForm);
-            const formAction = 'https://formsubmit.co/cortex.duo.ia@gmail.com'; // Definindo a URL de ação aqui
+            // Append all fields except the message textareas
+            for (let [key, value] of baseFormData.entries()) {
+                 if (key !== 'message' && key !== 'extra_message') {
+                    finalFormData.append(key, value);
+                }
+            }
+            finalFormData.append('message', finalMessageContent);
+
+            const formAction = 'https://formsubmit.co/cortex.duo.ia@gmail.com';
             
             try {
                 const response = await fetch(formAction, {
                     method: 'POST',
-                    body: formData,
+                    body: finalFormData,
                     headers: {
                         'Accept': 'application/json'
                     }
@@ -716,12 +843,9 @@
 
                     setTimeout(() => {
                         closeModal();
-                        // Reset form state after modal closes
                          setTimeout(() => {
-                            formContainer.classList.remove('hidden');
-                            successMessageContainer.classList.add('hidden');
-                            contactForm.reset();
-                        }, 500); // Delay to reset form after modal is closed
+                            resetContactForm();
+                        }, 500);
                     }, 3000);
                 } else {
                     throw new Error('Falha no envio');
@@ -739,6 +863,7 @@
         openModalButtons.forEach(button => {
             button.addEventListener('click', (e) => {
                 e.preventDefault();
+                resetContactForm();
                 contactModal.classList.remove('hidden');
                 mobileMenu.classList.add('hidden');
             });
@@ -754,6 +879,12 @@
             if (e.target === contactModal) {
                 closeModal();
             }
+        });
+        
+        addExtraMessageCheckbox.addEventListener('change', () => {
+            const isChecked = addExtraMessageCheckbox.checked;
+            extraMessageWrapper.classList.toggle('hidden', !isChecked);
+            extraMessageTextarea.required = isChecked;
         });
 
         // NOVO SCRIPT PARA MODAL DE SERVIÇOS
@@ -998,6 +1129,110 @@
 
         video.addEventListener('loadedmetadata', function() {
           video.pause();
+        });
+
+        // SCRIPT BRAINSTORM IA
+        const generateIdeasButton = document.getElementById('generate-ideas-button');
+        const businessTypeInput = document.getElementById('business-type-input');
+        const ideasOutput = document.getElementById('ideas-output');
+
+        async function generateAutomationIdeas() {
+            const businessType = businessTypeInput.value.trim();
+            if (!businessType) {
+                ideasOutput.innerHTML = `<p class="text-red-500">Por favor, descreva seu tipo de negócio.</p>`;
+                return;
+            }
+
+            ideasOutput.innerHTML = `<div class="flex justify-center items-center"><div class="animate-spin rounded-full h-8 w-8 border-b-2 border-orange-500"></div></div>`;
+            generateIdeasButton.disabled = true;
+
+            const systemPrompt = "Você é um consultor de negócios especialista em automação e IA. Sua tarefa é gerar 3 ideias de automação criativas e práticas para o tipo de negócio do usuário. Para cada ideia, forneça um título, uma descrição curta e o principal benefício.";
+            const userPrompt = `Tipo de negócio: ${businessType}`;
+            
+            let apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-05-20:generateContent`;
+            if (apiKey) {
+                apiUrl += `?key=${apiKey}`;
+            }
+
+            const payload = {
+                contents: [{ parts: [{ text: userPrompt }] }],
+                systemInstruction: { parts: [{ text: systemPrompt }] },
+                generationConfig: {
+                    responseMimeType: "application/json",
+                    responseSchema: {
+                        type: "ARRAY",
+                        items: {
+                            type: "OBJECT",
+                            properties: {
+                                "ideia": { "type": "STRING" },
+                                "descricao": { "type": "STRING" },
+                                "beneficio": { "type": "STRING" }
+                            },
+                            required: ["ideia", "descricao", "beneficio"]
+                        }
+                    }
+                }
+            };
+
+            try {
+                const response = await fetch(apiUrl, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
+                
+                if (!response.ok) {
+                    throw new Error('API response was not ok.');
+                }
+
+                const result = await response.json();
+                const jsonText = result.candidates?.[0]?.content?.parts?.[0]?.text;
+                const ideas = JSON.parse(jsonText);
+
+                ideasOutput.innerHTML = '';
+                ideas.forEach(idea => {
+                    const cardButton = document.createElement('button');
+                    cardButton.className = 'idea-card bg-slate-50 dark:bg-slate-900/50 p-6 rounded-lg shadow-md w-full text-left transition hover:border-orange-500 border-l-4 border-transparent';
+                    cardButton.innerHTML = `
+                        <h4 class="font-bold text-lg text-slate-900 dark:text-white">${idea.ideia}</h4>
+                        <p class="text-gray-600 dark:text-gray-400 mt-2">${idea.descricao}</p>
+                        <p class="text-sm font-semibold text-orange-500 mt-3"><strong>Benefício Principal:</strong> ${idea.beneficio}</p>
+                    `;
+                    cardButton.dataset.title = idea.ideia;
+                    cardButton.dataset.description = idea.descricao;
+
+                    cardButton.addEventListener('click', () => {
+                        resetContactForm();
+                        messageContainer.classList.add('hidden');
+                        ideaMessageContainer.classList.remove('hidden');
+                        messageTextarea.required = false;
+
+                        selectedIdeaDisplay.innerHTML = `
+                            <strong class="font-semibold text-slate-800 dark:text-white">${cardButton.dataset.title}</strong>
+                            <p class="mt-1 text-gray-600 dark:text-gray-400">${cardButton.dataset.description}</p>
+                        `;
+                        
+                        document.getElementById('modal-service').value = "Outro";
+
+                        contactModal.classList.remove('hidden');
+                    });
+
+                    ideasOutput.appendChild(cardButton);
+                });
+
+            } catch (error) {
+                console.error("Error generating ideas:", error);
+                ideasOutput.innerHTML = `<p class="text-red-500">Desculpe, não foi possível gerar as ideias. Tente novamente.</p>`;
+            } finally {
+                generateIdeasButton.disabled = false;
+            }
+        }
+
+        generateIdeasButton.addEventListener('click', generateAutomationIdeas);
+        businessTypeInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                generateAutomationIdeas();
+            }
         });
 
 
