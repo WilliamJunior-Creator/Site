@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cortex Duo | Automação Inteligente para Negócios</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .hero-bg {
+            background-color: #0a192f;
+            background-image: linear-gradient(180deg, #0a192f 0%, #0c203a 100%);
+        }
+        .cta-button {
+            transition: all 0.3s ease;
+        }
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 20px rgba(249, 115, 22, 0.3); /* Laranja */
+        }
+        .service-card:hover {
+            transform: translateY(-5px);
+            border-color: #f97316; /* Laranja */
+        }
+        .case-study-card {
+            background-color: #172a45;
+        }
+    </style>
+</head>
+<body class="bg-gray-100 dark:bg-slate-900 text-gray-800 dark:text-gray-200">
+
+    <!-- Cabeçalho e Navegação -->
+    <header class="bg-slate-900/80 backdrop-blur-sm sticky top-0 z-50 shadow-md">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="#"><img src="Imagem do WhatsApp de 2025-09-04 à(s) 23.08.03_1503154d-Photoroom.jpg" alt="Cortex Duo Logo" class="h-12 w-auto"></a>
+            <div class="hidden md:flex space-x-8 items-center">
+                <a href="#services" class="text-gray-300 hover:text-orange-400 transition-colors">Serviços</a>
+                <a href="#examples" class="text-gray-300 hover:text-orange-400 transition-colors">Exemplos</a>
+                <a href="#cases" class="text-gray-300 hover:text-orange-400 transition-colors">Cases de Sucesso</a>
+                <a href="#process" class="text-gray-300 hover:text-orange-400 transition-colors">Nosso Processo</a>
+                <a href="#contact" class="bg-orange-500 text-white font-semibold py-2 px-4 rounded-lg hover:bg-orange-600 transition-colors">Fale Conosco</a>
+            </div>
+            <button id="mobile-menu-button" class="md:hidden text-white">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+                </svg>
+            </button>
+        </nav>
+        <!-- Menu Mobile -->
+        <div id="mobile-menu" class="hidden md:hidden px-6 pb-4">
+            <a href="#services" class="block py-2 text-gray-300 hover:text-orange-400">Serviços</a>
+            <a href="#examples" class="block py-2 text-gray-300 hover:text-orange-400">Exemplos</a>
+            <a href="#cases" class="block py-2 text-gray-300 hover:text-orange-400">Cases de Sucesso</a>
+            <a href="#process" class="block py-2 text-gray-300 hover:text-orange-400">Nosso Processo</a>
+            <a href="#contact" class="block mt-2 bg-orange-500 text-white font-semibold py-2 px-4 rounded-lg hover:bg-orange-600 text-center">Fale Conosco</a>
+        </div>
+    </header>
+
+    <main>
+        <!-- Seção Hero -->
+        <section class="hero-bg text-white">
+            <div class="container mx-auto px-6 py-24 text-center">
+                <h1 class="text-4xl md:text-6xl font-bold leading-tight mb-4">Revolucione seu Negócio com Automação e I.A.</h1>
+                <p class="text-lg md:text-xl text-gray-300 max-w-3xl mx-auto mb-8">Especialistas em criar chatbots inteligentes e soluções de automação que otimizam processos, reduzem custos e elevam a experiência do seu cliente.</p>
+                <a href="#contact" class="bg-orange-500 text-white font-bold py-3 px-8 rounded-lg text-lg cta-button inline-block">Agende uma Demonstração</a>
+            </div>
+        </section>
+
+        <!-- Seção de Serviços -->
+        <section id="services" class="py-20 bg-white dark:bg-slate-800">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl md:text-4xl font-bold text-slate-900 dark:text-white">Nossas Soluções de Automação</h2>
+                    <p class="text-gray-600 dark:text-gray-400 mt-4 max-w-2xl mx-auto">Do atendimento ao cliente à análise de dados, criamos soluções personalizadas para os desafios da sua empresa.</p>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Cards de serviço com icones laranja -->
+                    <div class="service-card border-2 border-transparent bg-slate-50 dark:bg-slate-900 rounded-lg p-6 shadow-lg transition-all duration-300">
+                        <div class="flex items-center justify-center h-12 w-12 rounded-full bg-orange-100 dark:bg-orange-900/50 mb-4">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-orange-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" /></svg>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2 text-slate-900 dark:text-white">Chatbots de Atendimento 24/7</h3>
+                        <p class="text-gray-600 dark:text-gray-400">Automatize o suporte ao cliente com chatbots que resolvem dúvidas, abrem chamados e guiam usuários, disponíveis a qualquer hora do dia.</p>
+                    </div>
+                     <div class="service-card border-2 border-transparent bg-slate-50 dark:bg-slate-900 rounded-lg p-6 shadow-lg transition-all duration-300">
+                         <div class="flex items-center justify-center h-12 w-12 rounded-full bg-orange-100 dark:bg-orange-900/50 mb-4">
+                           <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-orange-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" /></svg>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2 text-slate-900 dark:text-white">Chatbots para Vendas e Leads</h3>
+                        <p class="text-gray-600 dark:text-gray-400">Qualifique visitantes do seu site, agende reuniões e direcione leads para sua equipe de vendas de forma automática e eficiente.</p>
+                    </div>
+                    <div class="service-card border-2 border-transparent bg-slate-50 dark:bg-slate-900 rounded-lg p-6 shadow-lg transition-all duration-300">
+                         <div class="flex items-center justify-center h-12 w-12 rounded-full bg-orange-100 dark:bg-orange-900/50 mb-4">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-orange-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" /></svg>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2 text-slate-900 dark:text-white">Automação de Processos (RPA)</h3>
+                        <p class="text-gray-600 dark:text-gray-400">Elimine tarefas manuais e repetitivas. Nossos robôs de software podem preencher formulários, extrair dados e integrar sistemas.</p>
+                    </div>
+                    <div class="service-card border-2 border-transparent bg-slate-50 dark:bg-slate-900 rounded-lg p-6 shadow-lg transition-all duration-300">
+                         <div class="flex items-center justify-center h-12 w-12 rounded-full bg-orange-100 dark:bg-orange-900/50 mb-4">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-orange-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4z" /></svg>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2 text-slate-900 dark:text-white">IA para E-commerce</h3>
+                        <p class="text-gray-600 dark:text-gray-400">Implemente sistemas de recomendação de produtos, chatbots para recuperação de carrinho e análise de comportamento de compra.</p>
+                    </div>
+                    <div class="service-card border-2 border-transparent bg-slate-50 dark:bg-slate-900 rounded-lg p-6 shadow-lg transition-all duration-300">
+                         <div class="flex items-center justify-center h-12 w-12 rounded-full bg-orange-100 dark:bg-orange-900/50 mb-4">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-orange-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" /></svg>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2 text-slate-900 dark:text-white">Análise Preditiva e Dados</h3>
+                        <p class="text-gray-600 dark:text-gray-400">Utilize IA para analisar grandes volumes de dados, identificar tendências, prever demandas e tomar decisões mais inteligentes.</p>
+                    </div>
+                    <div class="service-card border-2 border-transparent bg-slate-50 dark:bg-slate-900 rounded-lg p-6 shadow-lg transition-all duration-300">
+                         <div class="flex items-center justify-center h-12 w-12 rounded-full bg-orange-100 dark:bg-orange-900/50 mb-4">
+                           <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-orange-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1" /></svg>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2 text-slate-900 dark:text-white">Integração com Sistemas</h3>
+                        <p class="text-gray-600 dark:text-gray-400">Nossas soluções se integram perfeitamente com seus sistemas existentes (CRMs, ERPs, APIs) para um fluxo de trabalho unificado.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- NOVA Seção de Exemplos -->
+        <section id="examples" class="py-20 bg-slate-100 dark:bg-slate-900">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl md:text-4xl font-bold text-slate-900 dark:text-white">Veja a Mágica da IA em Ação</h2>
+                    <p class="text-gray-600 dark:text-gray-400 mt-4 max-w-2xl mx-auto">Selecione o tipo de plano e veja a diferença entre um chatbot convencional e um com o poder da Inteligência Artificial.</p>
+                </div>
+
+                <div class="max-w-4xl mx-auto">
+                    <!-- Seletores -->
+                    <div class="max-w-md mx-auto mb-8">
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2 text-center">Selecione um tipo de plano:</label>
+                            <div class="flex bg-white dark:bg-slate-800 rounded-lg p-1 border dark:border-slate-600">
+                                <button data-plan="essencial" class="plan-selector flex-1 p-2 rounded-md text-sm font-semibold transition-colors bg-orange-500 text-white">Essencial (Sem IA)</button>
+                                <button data-plan="inteligente" class="plan-selector flex-1 p-2 rounded-md text-sm font-semibold transition-colors text-gray-600 dark:text-gray-300">Inteligente (Com IA)</button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Sub-seletores para Plano Inteligente -->
+                    <div id="inteligente-options" class="hidden mb-8 max-w-md mx-auto">
+                        <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2 text-center">Qual nível de IA você quer ver?</label>
+                        <div class="flex bg-white dark:bg-slate-800 rounded-lg p-1 border dark:border-slate-600">
+                            <button data-level="1" class="level-selector flex-1 p-2 rounded-md text-sm font-semibold transition-colors bg-blue-500 text-white">Nível 1</button>
+                            <button data-level="2" class="level-selector flex-1 p-2 rounded-md text-sm font-semibold transition-colors text-gray-600 dark:text-gray-300">Nível 2</button>
+                        </div>
+                    </div>
+
+                    <!-- Janela de Demonstração Única -->
+                    <div id="chat-demo-container" class="bg-white dark:bg-slate-800 rounded-lg shadow-lg p-6 max-w-lg mx-auto">
+                        <h3 id="demo-title" class="text-2xl font-bold text-slate-900 dark:text-white mb-1">Demonstração: Plano Essencial</h3>
+                        <p id="demo-description" class="text-sm text-gray-500 dark:text-gray-400 mb-4">Baseado em regras. Não interpreta áudio, imagens ou texto fora do script.</p>
+                        <div class="bg-gray-100 dark:bg-slate-700 rounded-lg p-4 h-80 flex flex-col">
+                            <div id="chat-messages" class="space-y-3">
+                                <!-- Conteúdo do chat será inserido via JS -->
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Botão de Orçamento -->
+                    <div class="text-center mt-8">
+                        <a href="#contact" target="_blank" class="bg-orange-500 text-white font-bold py-3 px-8 rounded-lg text-lg cta-button inline-block">
+                            Venha fazer um orçamento
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Seção de Cases de Sucesso -->
+        <section id="cases" class="py-20 hero-bg">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl md:text-4xl font-bold text-white">Resultados Reais para Nossos Clientes</h2>
+                    <p class="text-gray-300 mt-4 max-w-2xl mx-auto">Veja como ajudamos empresas de diversos setores a alcançar a excelência operacional.</p>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Case 1 -->
+                    <div class="case-study-card rounded-lg p-6 flex flex-col">
+                        <h3 class="text-xl font-bold text-orange-400 mb-2">Varejista de Moda Online</h3>
+                        <p class="text-gray-300 mb-4 flex-grow">Implementação de chatbot para suporte pós-venda, rastreio de pedidos e política de trocas.</p>
+                        <div class="mt-auto">
+                            <span class="text-2xl font-bold text-white">Redução de 40%</span>
+                            <p class="text-orange-300">nos chamados de suporte nível 1.</p>
+                        </div>
+                    </div>
+                    <!-- Case 2 -->
+                    <div class="case-study-card rounded-lg p-6 flex flex-col">
+                        <h3 class="text-xl font-bold text-orange-400 mb-2">Clínica de Saúde e Bem-estar</h3>
+                        <p class="text-gray-300 mb-4 flex-grow">Chatbot no WhatsApp para agendamento, confirmação de consultas e respostas a dúvidas frequentes.</p>
+                        <div class="mt-auto">
+                            <span class="text-2xl font-bold text-white">Aumento de 25%</span>
+                            <p class="text-orange-300">na taxa de agendamentos concluídos.</p>
+                        </div>
+                    </div>
+                    <!-- Case 3 -->
+                    <div class="case-study-card rounded-lg p-6 flex flex-col">
+                        <h3 class="text-xl font-bold text-orange-400 mb-2">Empresa de Software (SaaS)</h3>
+                        <p class="text-gray-300 mb-4 flex-grow">Automação (RPA) para a criação de contas de teste e onboarding de novos usuários, integrando com CRM.</p>
+                        <div class="mt-auto">
+                            <span class="text-2xl font-bold text-white">90% de economia</span>
+                            <p class="text-orange-300">no tempo gasto em tarefas manuais de onboarding.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Seção Nosso Processo -->
+        <section id="process" class="py-20 bg-white dark:bg-slate-800">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl md:text-4xl font-bold text-slate-900 dark:text-white">Nosso Caminho para o Sucesso</h2>
+                    <p class="text-gray-600 dark:text-gray-400 mt-4 max-w-2xl mx-auto">Trabalhamos de forma colaborativa para garantir que a solução entregue seja perfeitamente alinhada aos seus objetivos.</p>
+                </div>
+                <div class="relative">
+                     <!-- Linha do tempo -->
+                    <div class="hidden md:block border-l-2 border-orange-500 absolute h-full top-0" style="left: 50%;"></div>
+                    
+                    <!-- Item 1 -->
+                    <div class="mb-8 flex md:justify-between md:items-center w-full md:flex-row-reverse">
+                        <div class="md:w-5/12"></div>
+                        <div class="z-10 flex items-center bg-orange-500 shadow-xl w-8 h-8 rounded-full">
+                            <h1 class="mx-auto font-semibold text-lg text-white">1</h1>
+                        </div>
+                        <div class="bg-slate-100 dark:bg-slate-700 md:w-5/12 p-6 rounded-lg shadow-md">
+                            <h3 class="font-bold text-lg mb-1 text-slate-900 dark:text-white">Diagnóstico e Planejamento</h3>
+                            <p class="text-gray-600 dark:text-gray-400">Entendemos seus desafios, processos e metas para desenhar uma estratégia de automação sob medida.</p>
+                        </div>
+                    </div>
+
+                    <!-- Item 2 -->
+                    <div class="mb-8 flex md:justify-between md:items-center w-full">
+                         <div class="md:w-5/12"></div>
+                         <div class="z-10 flex items-center bg-orange-500 shadow-xl w-8 h-8 rounded-full">
+                            <h1 class="mx-auto text-white font-semibold text-lg">2</h1>
+                        </div>
+                        <div class="bg-slate-100 dark:bg-slate-700 md:w-5/12 p-6 rounded-lg shadow-md">
+                            <h3 class="font-bold text-lg mb-1 text-slate-900 dark:text-white">Desenvolvimento e Integração</h3>
+                            <p class="text-gray-600 dark:text-gray-400">Nossa equipe desenvolve a solução e a integra de forma transparente com suas ferramentas atuais.</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Item 3 -->
+                    <div class="mb-8 flex md:justify-between md:items-center w-full md:flex-row-reverse">
+                         <div class="md:w-5/12"></div>
+                         <div class="z-10 flex items-center bg-orange-500 shadow-xl w-8 h-8 rounded-full">
+                            <h1 class="mx-auto font-semibold text-lg text-white">3</h1>
+                        </div>
+                         <div class="bg-slate-100 dark:bg-slate-700 md:w-5/12 p-6 rounded-lg shadow-md">
+                            <h3 class="font-bold text-lg mb-1 text-slate-900 dark:text-white">Testes e Validação</h3>
+                            <p class="text-gray-600 dark:text-gray-400">Realizamos testes rigorosos para garantir que tudo funcione perfeitamente antes do lançamento oficial.</p>
+                        </div>
+                    </div>
+
+                    <!-- Item 4 -->
+                    <div class="mb-8 flex md:justify-between md:items-center w-full">
+                         <div class="md:w-5/12"></div>
+                         <div class="z-10 flex items-center bg-orange-500 shadow-xl w-8 h-8 rounded-full">
+                            <h1 class="mx-auto text-white font-semibold text-lg">4</h1>
+                        </div>
+                         <div class="bg-slate-100 dark:bg-slate-700 md:w-5/12 p-6 rounded-lg shadow-md">
+                            <h3 class="font-bold text-lg mb-1 text-slate-900 dark:text-white">Otimização e Suporte</h3>
+                            <p class="text-gray-600 dark:text-gray-400">Monitoramos a performance, colhemos feedback e otimizamos a solução continuamente, com suporte dedicado.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Seção de Contato -->
+        <section id="contact" class="py-20 bg-slate-100 dark:bg-slate-900">
+            <div class="container mx-auto px-6">
+                <div class="bg-white dark:bg-slate-800 rounded-lg shadow-xl p-8 md:p-12 lg:flex lg:items-center lg:justify-between">
+                    <div class="lg:w-1/2">
+                        <h2 class="text-3xl font-bold text-slate-900 dark:text-white">Vamos Conversar Sobre Seu Projeto?</h2>
+                        <p class="mt-4 text-gray-600 dark:text-gray-400">Preencha o formulário ou nos envie um e-mail. Nossa equipe está pronta para entender sua necessidade e propor a melhor solução de automação.</p>
+                        <div class="mt-6">
+                            <p class="flex items-center text-gray-700 dark:text-gray-300">
+                                <svg class="w-5 h-5 mr-2 text-orange-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+                                contato@cortexduo.com
+                            </p>
+                        </div>
+                    </div>
+                    <div class="mt-8 lg:mt-0 lg:w-1/2">
+                        <form action="#" method="POST">
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <div>
+                                    <label for="name" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Nome</label>
+                                    <input type="text" id="name" name="name" class="mt-1 block w-full bg-slate-50 dark:bg-slate-700 border-gray-300 dark:border-slate-600 rounded-md shadow-sm focus:ring-orange-500 focus:border-orange-500 p-2">
+                                </div>
+                                <div>
+                                    <label for="company" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Empresa</label>
+                                    <input type="text" id="company" name="company" class="mt-1 block w-full bg-slate-50 dark:bg-slate-700 border-gray-300 dark:border-slate-600 rounded-md shadow-sm focus:ring-orange-500 focus:border-orange-500 p-2">
+                                </div>
+                            </div>
+                            <div class="mt-4">
+                                <label for="email" class="block text-sm font-medium text-gray-700 dark:text-gray-300">E-mail</label>
+                                <input type="email" id="email" name="email" class="mt-1 block w-full bg-slate-50 dark:bg-slate-700 border-gray-300 dark:border-slate-600 rounded-md shadow-sm focus:ring-orange-500 focus:border-orange-500 p-2">
+                            </div>
+                            <div class="mt-4">
+                                <label for="message" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Sua Mensagem</label>
+                                <textarea id="message" name="message" rows="4" class="mt-1 block w-full bg-slate-50 dark:bg-slate-700 border-gray-300 dark:border-slate-600 rounded-md shadow-sm focus:ring-orange-500 focus:border-orange-500 p-2"></textarea>
+                            </div>
+                            <div class="mt-6">
+                                <button type="submit" class="w-full bg-orange-500 text-white font-bold py-3 px-6 rounded-lg hover:bg-orange-600 transition-colors">
+                                    Enviar Mensagem
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Rodapé -->
+    <footer class="bg-slate-900">
+        <div class="container mx-auto px-6 py-8 text-center text-gray-400">
+            <p>&copy; 2024 Cortex Duo. Todos os direitos reservados.</p>
+            <p class="text-sm mt-1">Transformando negócios com inteligência.</p>
+        </div>
+    </footer>
+    
+    <!-- Widget de Chatbot -->
+    <div class="fixed bottom-5 right-5 z-50">
+        <!-- Botão do Widget -->
+        <button id="chat-widget-button" class="bg-orange-500 text-white rounded-full shadow-lg w-16 h-16 flex items-center justify-center hover:bg-orange-600 transition-transform hover:scale-110">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
+            </svg>
+        </button>
+        <!-- Janela do Chat (escondida por padrão) -->
+        <div id="chat-widget-window" class="hidden absolute bottom-20 right-0 w-80 bg-white dark:bg-slate-800 rounded-lg shadow-2xl border dark:border-slate-700 flex flex-col" style="height: 28rem;">
+            <div class="bg-slate-900 text-white p-4 rounded-t-lg flex justify-between items-center">
+                <h3 class="font-bold">Assistente Virtual</h3>
+                <button id="close-chat-widget" class="text-gray-300 hover:text-white">&times;</button>
+            </div>
+            <div class="flex-1 p-4 overflow-y-auto text-sm">
+                 <div class="bg-orange-500 text-white p-2 rounded-lg rounded-bl-none max-w-xs mb-2">
+                    Olá! 👋 Vi que está explorando nossas soluções. Posso ajudar a encontrar o plano ideal para você?
+                </div>
+            </div>
+            <div class="p-4 border-t dark:border-slate-700">
+                <input type="text" placeholder="Digite sua mensagem..." class="w-full bg-slate-100 dark:bg-slate-700 border-gray-300 dark:border-slate-600 rounded-md shadow-sm focus:ring-orange-500 focus:border-orange-500 p-2 text-sm">
+            </div>
+        </div>
+    </div>
+
+
+    <script>
+        // Script para menu mobile
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+        const mobileMenuLinks = mobileMenu.querySelectorAll('a');
+        mobileMenuLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+
+        // Script para Widget de Chat
+        const chatWidgetButton = document.getElementById('chat-widget-button');
+        const chatWidgetWindow = document.getElementById('chat-widget-window');
+        const closeChatWidgetButton = document.getElementById('close-chat-widget');
+
+        chatWidgetButton.addEventListener('click', () => {
+            chatWidgetWindow.classList.toggle('hidden');
+        });
+        closeChatWidgetButton.addEventListener('click', () => {
+            chatWidgetWindow.classList.add('hidden');
+        });
+
+        // NOVO SCRIPT PARA DEMONSTRAÇÃO DE CHAT
+        const planSelectors = document.querySelectorAll('.plan-selector');
+        const inteligenteOptions = document.getElementById('inteligente-options');
+        const levelSelectors = document.querySelectorAll('.level-selector');
+        const chatMessages = document.getElementById('chat-messages');
+        const demoTitle = document.getElementById('demo-title');
+        const demoDescription = document.getElementById('demo-description');
+
+        let currentPlan = 'essencial';
+        let currentLevel = 1;
+
+        const chatContent = {
+            essencial: {
+                title: 'Demonstração: Plano Essencial',
+                description: 'Baseado em regras. Não interpreta áudio, imagens ou texto fora do script.',
+                messages: `
+                    <div class="bg-blue-500 text-white p-2 rounded-lg rounded-bl-none max-w-xs">Olá! Como posso ajudar?</div>
+                    <div class="bg-gray-300 text-gray-800 p-2 rounded-lg rounded-br-none ml-auto max-w-xs">qual o horario de vcs?</div>
+                    <div class="bg-blue-500 text-white p-2 rounded-lg rounded-bl-none max-w-xs">Não entendi. Por favor, escolha uma opção: <br>1. Nossos Serviços <br>2. Falar com Atendente</div>
+                `
+            },
+            inteligente: {
+                1: {
+                    title: 'Demonstração: Inteligente Nível 1',
+                    description: 'Compreende linguagem natural para conversas fluidas.',
+                    messages: `
+                        <div class="bg-orange-500 text-white p-2 rounded-lg rounded-bl-none max-w-xs">Olá! Como posso ajudar?</div>
+                        <div class="bg-gray-300 text-gray-800 p-2 rounded-lg rounded-br-none ml-auto max-w-xs">qual o horario de vcs?</div>
+                        <div class="bg-orange-500 text-white p-2 rounded-lg rounded-bl-none max-w-xs italic text-sm opacity-75">digitando...</div>
+                        <div class="bg-orange-500 text-white p-2 rounded-lg rounded-bl-none max-w-xs">Nosso horário de funcionamento é de segunda a sexta, das 9h às 18h. Posso ajudar com mais alguma coisa?</div>
+                    `
+                },
+                2: {
+                    title: 'Demonstração: Inteligente Nível 2',
+                    description: 'Interpreta áudio, envia mídias e pode realizar/receber ligações.',
+                     messages: `
+                        <div class="bg-orange-500 text-white p-2 rounded-lg rounded-bl-none max-w-xs">Olá! Como posso ajudar?</div>
+                        <div class="bg-gray-300 text-gray-800 p-2 rounded-lg rounded-br-none ml-auto max-w-xs flex items-center gap-2">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M7 4a3 3 0 016 0v4a3 3 0 11-6 0V4zm4 10.93A7.001 7.001 0 0017 8a1 1 0 10-2 0A5 5 0 017 8a1 1 0 10-2 0 7.001 7.001 0 006 6.93V17H9a1 1 0 100 2h2a1 1 0 100-2h-1v-2.07z" clip-rule="evenodd" /></svg>
+                            <span>Mensagem de áudio</span>
+                        </div>
+                        <div class="bg-orange-500 text-white p-2 rounded-lg rounded-bl-none max-w-xs italic text-sm opacity-75">digitando...</div>
+                        <div class="bg-orange-500 text-white p-2 rounded-lg rounded-bl-none max-w-xs">Entendido! Você perguntou sobre nosso horário. Se preferir, posso te ligar agora para conversarmos sobre suas necessidades. Deseja receber a ligação?</div>
+                    `
+                }
+            }
+        };
+
+        function updateChatDemo() {
+            let content;
+            if (currentPlan === 'essencial') {
+                content = chatContent.essencial;
+            } else {
+                content = chatContent.inteligente[currentLevel];
+            }
+            demoTitle.textContent = content.title;
+            demoDescription.textContent = content.description;
+            chatMessages.innerHTML = content.messages;
+        }
+
+        planSelectors.forEach(button => {
+            button.addEventListener('click', () => {
+                currentPlan = button.dataset.plan;
+                
+                planSelectors.forEach(btn => {
+                    btn.classList.remove('bg-orange-500', 'text-white');
+                    btn.classList.add('text-gray-600', 'dark:text-gray-300');
+                });
+                button.classList.add('bg-orange-500', 'text-white');
+                button.classList.remove('text-gray-600', 'dark:text-gray-300');
+
+                if (currentPlan === 'inteligente') {
+                    inteligenteOptions.classList.remove('hidden');
+                } else {
+                    inteligenteOptions.classList.add('hidden');
+                }
+                updateChatDemo();
+            });
+        });
+
+        levelSelectors.forEach(button => {
+            button.addEventListener('click', () => {
+                currentLevel = parseInt(button.dataset.level, 10);
+                
+                 levelSelectors.forEach(btn => {
+                    btn.classList.remove('bg-blue-500', 'text-white');
+                    btn.classList.add('text-gray-600', 'dark:text-gray-300');
+                });
+                button.classList.add('bg-blue-500', 'text-white');
+                button.classList.remove('text-gray-600', 'dark:text-gray-300');
+
+                updateChatDemo();
+            });
+        });
+
+        // Initial load
+        updateChatDemo();
+
+    </script>
+</body>
+</html>
