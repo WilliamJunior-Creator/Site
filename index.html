@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cortex Duo</title>
-    <link rel="icon" type="image/png" href="https://github.com/WilliamJunior-Creator/Site/edit/main/index.html">
+    
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -15,8 +15,7 @@
             scroll-behavior: smooth;
         }
         .hero-bg {
-            background-color: #0a192f;
-            background-image: linear-gradient(180deg, #0a192f 0%, #0c203a 100%);
+             background-color: rgba(10, 25, 47, 0.9); /* Azul escuro semi-transparente */
         }
         .cta-button {
             transition: all 0.3s ease;
@@ -54,13 +53,20 @@
     </style>
 </head>
 <body class="bg-gray-100 dark:bg-slate-900 text-gray-800 dark:text-gray-200">
+    <!-- Vídeo de Fundo -->
+    <div class="fixed inset-0 z-[-1] opacity-40">
+        <video preload="auto" muted playsinline id="bg-video" class="w-full h-full object-cover">
+            <source src="https://videos.pexels.com/video-files/3209828/3209828-hd_1920_1080_25fps.mp4" type="video/mp4">
+            Seu navegador não suporta vídeos.
+        </video>
+    </div>
+
 
     <!-- Cabeçalho e Navegação -->
     <header class="bg-slate-900/80 backdrop-blur-sm sticky top-0 z-40 shadow-md">
         <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
             <a href="#" class="flex items-center gap-2">
-                <img src="https://i.ibb.co/mS4p0Gz/cortex-Photoroom.png" alt="Cortex Duo Logo" class="h-9 w-auto">
-                <span class="text-white text-xl font-bold hidden sm:inline">Cortex Duo</span>
+                <span class="text-white text-2xl font-bold">Cortex<span class="text-orange-500">Duo</span></span>
             </a>
             <div class="hidden md:flex space-x-8 items-center">
                 <a href="#services" class="text-gray-300 hover:text-orange-400 transition-colors">Serviços</a>
@@ -96,7 +102,7 @@
         </section>
 
         <!-- Seção de Serviços -->
-        <section id="services" class="py-20 bg-white dark:bg-slate-800">
+        <section id="services" class="py-20 bg-white/95 dark:bg-slate-800/95 backdrop-blur-sm">
             <div class="container mx-auto px-6">
                 <div class="text-center mb-12">
                     <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold text-slate-900 dark:text-white">Nossas Soluções de Automação</h2>
@@ -104,42 +110,42 @@
                 </div>
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                     <!-- Cards de serviço com icones laranja -->
-                    <button data-service="atendimento" class="service-card text-left border-2 border-transparent bg-slate-50 dark:bg-slate-900 rounded-lg p-6 shadow-lg">
+                    <button data-service="atendimento" class="service-card text-left border-2 border-gray-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-900 rounded-lg p-6 shadow-lg">
                         <div class="flex items-center justify-center h-12 w-12 rounded-full bg-orange-100 dark:bg-orange-900/50 mb-4">
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-orange-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" /></svg>
                         </div>
                         <h3 class="text-xl font-bold mb-2 text-slate-900 dark:text-white">Chatbots de Atendimento 24/7</h3>
                         <p class="text-gray-600 dark:text-gray-400">Automatize o suporte ao cliente com chatbots que resolvem dúvidas, abrem chamados e guiam usuários, disponíveis a qualquer hora do dia.</p>
                     </button>
-                     <button data-service="vendas" class="service-card text-left border-2 border-transparent bg-slate-50 dark:bg-slate-900 rounded-lg p-6 shadow-lg">
+                     <button data-service="vendas" class="service-card text-left border-2 border-gray-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-900 rounded-lg p-6 shadow-lg">
                          <div class="flex items-center justify-center h-12 w-12 rounded-full bg-orange-100 dark:bg-orange-900/50 mb-4">
                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-orange-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" /></svg>
                         </div>
                         <h3 class="text-xl font-bold mb-2 text-slate-900 dark:text-white">Chatbots para Vendas e Leads</h3>
                         <p class="text-gray-600 dark:text-gray-400">Qualifique visitantes do seu site, agende reuniões e direcione leads para sua equipe de vendas de forma automática e eficiente.</p>
                     </button>
-                    <button data-service="rpa" class="service-card text-left border-2 border-transparent bg-slate-50 dark:bg-slate-900 rounded-lg p-6 shadow-lg">
+                    <button data-service="rpa" class="service-card text-left border-2 border-gray-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-900 rounded-lg p-6 shadow-lg">
                          <div class="flex items-center justify-center h-12 w-12 rounded-full bg-orange-100 dark:bg-orange-900/50 mb-4">
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-orange-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" /></svg>
                         </div>
                         <h3 class="text-xl font-bold mb-2 text-slate-900 dark:text-white">Automação de Processos (RPA)</h3>
                         <p class="text-gray-600 dark:text-gray-400">Elimine tarefas manuais e repetitivas. Nossos robôs de software podem preencher formulários, extrair dados e integrar sistemas.</p>
                     </button>
-                    <button data-service="ecommerce" class="service-card text-left border-2 border-transparent bg-slate-50 dark:bg-slate-900 rounded-lg p-6 shadow-lg">
+                    <button data-service="ecommerce" class="service-card text-left border-2 border-gray-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-900 rounded-lg p-6 shadow-lg">
                          <div class="flex items-center justify-center h-12 w-12 rounded-full bg-orange-100 dark:bg-orange-900/50 mb-4">
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-orange-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4z" /></svg>
                         </div>
                         <h3 class="text-xl font-bold mb-2 text-slate-900 dark:text-white">IA para E-commerce</h3>
                         <p class="text-gray-600 dark:text-gray-400">Implemente sistemas de recomendação de produtos, chatbots para recuperação de carrinho e análise de comportamento de compra.</p>
                     </button>
-                    <button data-service="dados" class="service-card text-left border-2 border-transparent bg-slate-50 dark:bg-slate-900 rounded-lg p-6 shadow-lg">
+                    <button data-service="dados" class="service-card text-left border-2 border-gray-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-900 rounded-lg p-6 shadow-lg">
                          <div class="flex items-center justify-center h-12 w-12 rounded-full bg-orange-100 dark:bg-orange-900/50 mb-4">
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-orange-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" /></svg>
                         </div>
                         <h3 class="text-xl font-bold mb-2 text-slate-900 dark:text-white">Análise Preditiva e Dados</h3>
                         <p class="text-gray-600 dark:text-gray-400">Utilize IA para analisar grandes volumes de dados, identificar tendências, prever demandas e tomar decisões mais inteligentes.</p>
                     </button>
-                    <button data-service="integracao" class="service-card text-left border-2 border-transparent bg-slate-50 dark:bg-slate-900 rounded-lg p-6 shadow-lg">
+                    <button data-service="integracao" class="service-card text-left border-2 border-gray-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-900 rounded-lg p-6 shadow-lg">
                          <div class="flex items-center justify-center h-12 w-12 rounded-full bg-orange-100 dark:bg-orange-900/50 mb-4">
                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-orange-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1" /></svg>
                         </div>
@@ -151,7 +157,7 @@
         </section>
         
         <!-- NOVA Seção de Exemplos -->
-        <section id="examples" class="py-20 bg-slate-100 dark:bg-slate-900">
+        <section id="examples" class="py-20 bg-slate-100/95 dark:bg-slate-900/95 backdrop-blur-sm">
             <div class="container mx-auto px-6">
                 <div class="text-center mb-12">
                     <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold text-slate-900 dark:text-white">Veja a Mágica da IA em Ação</h2>
@@ -206,7 +212,7 @@
         </section>
 
         <!-- Seção de Cases de Sucesso -->
-        <section id="cases" class="py-20 hero-bg">
+        <section id="cases" class="py-20 bg-slate-900/90 backdrop-blur-sm">
             <div class="container mx-auto px-6">
                 <div class="text-center mb-12">
                     <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold text-white">Resultados Reais para Nossos Clientes</h2>
@@ -245,7 +251,7 @@
         </section>
 
         <!-- Seção Nosso Processo -->
-        <section id="process" class="py-20 bg-white dark:bg-slate-800">
+        <section id="process" class="py-20 bg-white/95 dark:bg-slate-800/95 backdrop-blur-sm">
             <div class="container mx-auto px-6">
                 <div class="text-center mb-12">
                     <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold text-slate-900 dark:text-white">Nosso Caminho para o Sucesso</h2>
@@ -458,7 +464,7 @@
 
 
     <!-- Rodapé -->
-    <footer class="bg-slate-900">
+    <footer class="bg-slate-900/95 backdrop-blur-sm">
         <div class="container mx-auto px-6 py-8 text-center text-gray-400">
             <p>&copy; 2024 Cortex Duo. Todos os direitos reservados.</p>
             <p class="text-sm mt-1">Transformando negócios com inteligência.</p>
@@ -561,22 +567,31 @@
         
         const getAiResponse = (input) => {
             const lowerInput = input.toLowerCase();
-            if (lowerInput.includes('serviços') || lowerInput.includes('soluções') || lowerInput.includes('fazem')) {
+            
+            // Resposta aprimorada sobre a empresa
+            if (lowerInput.includes('cortex duo') || (lowerInput.includes('o que') && (lowerInput.includes('faz') || lowerInput.includes('fazem'))) || lowerInput.includes('sobre a empresa')) {
+                return {
+                    text: 'A Cortex Duo é especialista em transformar negócios com automação e Inteligência Artificial. Nós criamos soluções como chatbots inteligentes e automação de processos (RPA) para otimizar operações, reduzir custos e melhorar a experiência do cliente. Quer conhecer nossas principais soluções?',
+                    button: { text: 'Sim, me mostre os serviços', link: '#services' }
+                };
+            }
+            
+            if (lowerInput.includes('serviço') || lowerInput.includes('soluç') || lowerInput.includes('produto')) {
                 return {
                     text: 'Oferecemos diversas soluções de automação, incluindo Chatbots, Automação de Processos (RPA) e IA para E-commerce. Gostaria de ver mais detalhes?',
                     button: { text: 'Ver todos os serviços', link: '#services' }
                 };
-            } else if (lowerInput.includes('chatbot') || lowerInput.includes('exemplos')) {
+            } else if (lowerInput.includes('chatbot') || lowerInput.includes('exemplo')) {
                 return {
                     text: 'Nossos chatbots são super versáteis! Temos desde planos mais simples até IAs avançadas que podem até fazer ligações. Quer ver como eles funcionam na prática?',
                     button: { text: 'Ver exemplos de chatbots', link: '#examples' }
                 };
-            } else if (lowerInput.includes('preço') || lowerInput.includes('valor') || lowerInput.includes('custo')) {
+            } else if (lowerInput.includes('preço') || lowerInput.includes('valor') || lowerInput.includes('custo') || lowerInput.includes('orçamento')) {
                 return {
                     text: 'Nossos preços são personalizados. A melhor forma de saber o valor é conversando com nossa equipe. Vamos agendar uma demonstração sem compromisso?',
                     button: { text: 'Pedir um orçamento', link: '#contact' }
                 };
-            } else if (lowerInput.includes('contato') || lowerInput.includes('falar')) {
+            } else if (lowerInput.includes('contato') || lowerInput.includes('falar') || lowerInput.includes('telefone') || lowerInput.includes('email')) {
                 return {
                     text: 'Para falar conosco, é só preencher nosso formulário de contato. Nossa equipe retornará o mais breve possível!',
                     button: { text: 'Ir para o formulário', link: '#contact' }
@@ -586,11 +601,14 @@
                     text: 'Nossa solução de RPA ajuda a eliminar tarefas manuais e repetitivas, economizando tempo e reduzindo erros. É ideal para tarefas como preenchimento de formulários e extração de dados.',
                     button: { text: 'Saber mais sobre serviços', link: '#services' }
                 };
-            } else if (lowerInput.includes('olá') || lowerInput.includes('oi') || lowerInput.includes('bom dia')) {
+            } else if (lowerInput.includes('olá') || lowerInput.includes('oi') || lowerInput.includes('bom dia') || lowerInput.includes('boa tarde') || lowerInput.includes('boa noite')) {
                 return { text: 'Olá! Que bom falar com você. Em que posso ajudar?' };
             }
              else {
-                return { text: 'Desculpe, não entendi sua pergunta. Sou um assistente virtual e meu conhecimento é limitado. Tente perguntar sobre nossos serviços, chatbots ou como entrar em contato.' };
+                return { 
+                    text: 'Desculpe, não entendi sua pergunta. Sou um assistente virtual e meu conhecimento é limitado. Posso te ajudar com informações sobre nossos serviços, exemplos de chatbots ou como entrar em contato.',
+                    button: { text: 'Ver nossos serviços', link: '#services' }
+                };
             }
         };
 
@@ -871,11 +889,25 @@
             });
         });
 
+        // SCRIPT DO VÍDEO DE FUNDO
+        const video = document.getElementById('bg-video');
+        video.addEventListener('loadedmetadata', function() {
+          video.pause(); // Garante que o vídeo não toque sozinho
+          window.addEventListener('scroll', function() {
+            const scrollTop = document.documentElement.scrollTop;
+            const maxScrollTop = document.documentElement.scrollHeight - window.innerHeight;
+            const scrollFraction = scrollTop / maxScrollTop;
+            video.currentTime = Math.min(
+              video.duration * scrollFraction,
+              video.duration
+            );
+          });
+        });
+
+
         // Initial load
         updateChatDemoAndDescription();
 
     </script>
 </body>
 </html>
-
-
