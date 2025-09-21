@@ -576,11 +576,11 @@
         // e a função, que roda em um servidor seguro, fará a chamada para a API do Gemini
         // usando a chave, que ficará escondida.
         //
-        // Para este exemplo, a chave está vazia, pois o ambiente de execução a fornecerá.
-        // Se você for usar no GitHub Pages, precisará de uma solução mais segura.
+        // Para este exemplo, a chave está vazia. Cole a sua chave aqui para testar.
+        // Lembre-se de não publicar o site com a chave visível.
         //
         // ===================================================================================
-        const apiKey = "AIzaSyC_y_kkfFqH6sWCclL_pk6iGCMXmqUud8c"; 
+        const apiKey = "AIzaSyC_y_kkfFqH6sWCclL_pk6iGCMXmqUud8c"; // <-- IMPORTANTE: COLE SUA CHAVE DE API AQUI
 
         // --- SCRIPT PARA MENU MOBILE ---
         const mobileMenuButton = document.getElementById('mobile-menu-button');
@@ -666,7 +666,8 @@
             const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-05-20:generateContent?key=${apiKey}`;
            
             const payload = {
-                contents: [...chatHistory, { parts: [{ text: prompt }] }],
+                // CORREÇÃO: Adicionado "role: 'user'" ao objeto da nova mensagem.
+                contents: [...chatHistory, { role: 'user', parts: [{ text: prompt }] }],
                  systemInstruction: {
                     parts: [{ text: systemPrompt }]
                 },
@@ -1266,4 +1267,3 @@
     </script>
 </body>
 </html>
-
