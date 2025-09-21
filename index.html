@@ -639,10 +639,7 @@
         async function getGeminiResponse(prompt) {
              const systemPrompt = "Você é Cortez, o assistente virtual da Cortex Duo, uma empresa especialista em automação com Inteligência Artificial. Sua personalidade é prestativa, profissional e entusiasmada com tecnologia. Sua missão é ajudar os usuários a entenderem os serviços da Cortex Duo e guiá-los pelo site. Mantenha as respostas concisas (no máximo 3 frases). Se a pergunta for sobre serviços, exemplos, preços ou contato, inclua no final da sua resposta o token especial [BUTTON:Texto do Botão|#id-da-secao]. Os IDs disponíveis são: #services, #brainstorm, #examples, #cases, #process, #contact. Não invente informações. Se não souber a resposta, diga que é um assistente virtual com conhecimento limitado e sugira que o usuário entre em contato com a equipe usando o token [BUTTON:Fale com a equipe|#contact].";
 
-            let apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-05-20:generateContent`;
-             if (apiKey) {
-                apiUrl += `?key=${apiKey}`;
-            }
+            const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-05-20:generateContent?key=${apiKey}`;
             
             const payload = {
                 contents: [...chatHistory, { parts: [{ text: prompt }] }],
@@ -1149,10 +1146,7 @@
             const systemPrompt = "Você é um consultor de negócios especialista em automação e IA. Sua tarefa é gerar 3 ideias de automação criativas e práticas para o tipo de negócio do usuário. Para cada ideia, forneça um título, uma descrição curta e o principal benefício.";
             const userPrompt = `Tipo de negócio: ${businessType}`;
             
-            let apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-05-20:generateContent`;
-            if (apiKey) {
-                apiUrl += `?key=${apiKey}`;
-            }
+            const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-05-20:generateContent?key=${apiKey}`;
 
             const payload = {
                 contents: [{ parts: [{ text: userPrompt }] }],
